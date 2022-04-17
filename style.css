@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Fredoka+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+body {
+  font-family: "Fredoka One", cursive;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: black;
+}
+.webnamecontainer {
+  display: flex;
+  align-items: center;
+}
+.webname {
+  font-size: 1.5rem;
+  color: white;
+  font-family: "Fredoka One";
+  margin-left: 1rem;
+  cursor: default;
+}
+.logo {
+  height: 2rem;
+}
+.login {
+  display: flex;
+}
+.login__button {
+  border: none;
+  background: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s;
+  margin-right: 1rem;
+}
+.login__button:hover,
+.login__button:focus {
+  outline: none;
+  color: gray;
+}
+.login__input {
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  text-align: center;
+  width: 10rem;
+  border-radius: 5rem;
+  margin-right: 1rem;
+  color: inherit;
+  border: 1px solid white;
+}
+.login__input:focus {
+  outline: none;
+  border: 1px solid gray;
+}
+.login__input::placeholder {
+  font-family: "Fredoka One";
+  color: #bbb;
+}
+.todo__button {
+  font-family: inherit;
+  font-size: 1rem;
+  border: none;
+  margin-left: 3rem;
+  color: white;
+  background: none;
+}
