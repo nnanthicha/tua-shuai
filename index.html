@@ -19,5 +19,43 @@
         <button class="login__button">&rarr;</button>
       </form>
     </nav>
+
+    <!-- SCHEDULE -->
+    <div id="main">
+      <div class="row">
+          <div class="column">
+            <h1>Schedule</h1>
+          </div>
+          <div class="column">
+            <button id="edit-schedule-button">edit</button>
+          </div>
+      </div>
+      <div id="edit-schedule" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Subjects</h2>
+            <button id="add-button">&plus;</button>
+          </div>
+      </div>
+      
+      <table id="schedule">
+          <thead>
+            <th>Today:</th>
+            <th>Upcoming Tomorrow:</th>
+          </thead>
+          <tbody>
+            <td>
+              <ul id="today-subject">
+                <li></li>
+              </ul>
+            </td>
+            <td>
+              <ul id="tomorow-subject">
+                <li></li>
+              </ul>
+            </td>
+          </tbody>
+      </table>
+      <script src="script.js"></script>
   </body>
 </html>
