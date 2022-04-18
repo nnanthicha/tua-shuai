@@ -200,6 +200,13 @@ nav {
   font-family: "Fredoka One", cursive;
   font-size: medium;
   margin-bottom: 15px;
+  padding: 5px;
+}
+
+#description {
+  padding: 5px;
+  resize: none;
+  width: 100%;
 }
 
 
