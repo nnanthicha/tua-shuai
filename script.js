@@ -166,3 +166,11 @@ async function drawSchedule() {
     tomrrSubList.innerHTML += `<li style="margin-bottom:5px">${sub.data().startTime} - ${sub.data().endTime}<span style="margin-left:20px">${sub.data().subject}</span></li>`;
   });
 }
+
+window.mark_done = mark_done;
+async function mark_done(name) {
+  const table = document.getElementsByName(name)[0];
+  table.remove();
+  console.log("test")
+
+}
