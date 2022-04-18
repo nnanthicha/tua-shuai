@@ -191,5 +191,5 @@ window.mark_done = mark_done;
 async function mark_done(name) {
   const table = document.getElementsByName(name)[0];
   table.remove();
-  console.log("test")
+  console.log("test");
 }
