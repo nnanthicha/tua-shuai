@@ -14,6 +14,7 @@ const app = initializeApp(firebaseConfig);
 import {
   setDoc,
   addDoc,
+  deleteDoc,
   collection,
   doc,
   getDoc,
@@ -118,10 +119,17 @@ async function redrawSubjectList() {
       <td>${sub.data().subject}</td>
       <td>${sub.data().day}</td>
       <td>${sub.data().startTime} - ${sub.data().endTime}</td>
+      <td><button class="remove" id="remove-subject" onclick="deleteSubject('${sub.id}')">&minus;</button></td>
     </tr>`;
   });
   document.getElementById("subject").value = "";
   document.getElementById("day").value = "";
   document.getElementById("starting-time").value = "";
   document.getElementById("ending-time").value = "";
+}
+
+window.deleteSubject = async (subId) => {
+  const docRef = doc(db, "subjects/" + subId);
+  await deleteDoc(docRef);
+  redrawSubjectList();
 }
