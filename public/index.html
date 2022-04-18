@@ -1,94 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>TUA SHUAI</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <title>TUA SHUAI</title>
-</head>
-
-<body>
-  <!-- TOP NAVIGATION BAR -->
-  <nav>
-    <div class="webnamecontainer">
-      <img class="logo" alt="logo" src="assets/images/logo.svg" />
-      <p class="webname">TUA SHUAI</p>
-    </div>
-    <form class="login" id="username-form">
-      <input id="username" class="login__input" type="text" placeholder="ID or username" />
-      <button class="login__button">&rarr;</button>
-    </form>
-  </nav>
-
-  <!-- SCHEDULE -->
-  <div id="main">
-    <div class="row">
-      <div class="column">
-        <h1>Schedule</h1>
+  <body>
+    <!-- TOP NAVIGATION BAR -->
+    <nav>
+      <div class="webnamecontainer">
+        <img class="logo" alt="logo" src="assets/images/logo.svg" />
+        <p class="webname">TUA SHUAI</p>
       </div>
-      <div class="column">
-        <button id="edit-schedule-button">edit</button>
+      <form class="login" id="username-form">
+        <input
+          id="username"
+          class="login__input"
+          type="text"
+          placeholder="ID or username"
+        />
+        <button class="login__button">&rarr;</button>
+      </form>
+    </nav>
+
+    <!-- SCHEDULE -->
+    <div id="main">
+      <div class="row">
+        <div class="column">
+          <h1>Schedule</h1>
+        </div>
+        <div class="column">
+          <button id="edit-schedule-button">edit</button>
+        </div>
       </div>
-    </div>
-    <div id="edit-schedule" class="modal">
-      <div class="modal-content">
-        <span class="close" id="close-schedule-modal-button">&times;</span>
-        <h2>Subjects</h2>
-        <form id="subject-form">
-          <input type="text" id="subject" class="subject-form-input" placeholder="subject">
-          <select id="day" class="subject-form-input">
-            <option value="" selected disabled hidden>day</option>
-            <option value="1">MON</option>
-            <option value="2">TUE</option>
-            <option value="3">WED</option>
-            <option value="4">THU</option>
-            <option value="5">FRI</option>
-          </select>
-          <span class="subject-form-input">
-            start
-            <input type="time" id="starting-time">
-          </span>
-          <span class="subject-form-input">
-            end
-            <input type="time" id="ending-time">
-          </span>
-          <button class="add" id="add-subject">&plus;</button>
-        </form>
+      <div id="edit-schedule" class="modal">
+        <div class="modal-content">
+          <span class="close" id="close-schedule-modal-button">&times;</span>
+          <h2>Subjects</h2>
+          <table id="user-subjects">
+            <thead></thead>
+            <tbody id="subject-list"></tbody>
+            <tfoot>
+              <form id="subject-form">
+                <input type="text" id="subject" class="subject-form-input" placeholder="subject" required>
+                <select id="day" class="subject-form-input" required>
+                  <option value="" selected disabled hidden>day</option>
+                  <option value="MON">MON</option>
+                  <option value="TUE">TUE</option>
+                  <option value="WED">WED</option>
+                  <option value="THU">THU</option>
+                  <option value="FRI">FRI</option>
+                </select>
+                <span class="subject-form-input">
+                  start
+                  <input type="time" id="starting-time" required>
+                </span>
+                <span class="subject-form-input">
+                  end
+                  <input type="time" id="ending-time" required>
+                </span>
+                <button class="add" id="add-subject">&plus;</button>
+              </form>
+            </tfoot>
+          </table>
+        </div>
       </div>
-    </div>
 
-    <div id="login-warning" class="modal">
-      <div class="modal-content">
-        <p>It seems you are not login.<br>Please enter ID or username to enjoy Tua Shuai.</p>
+      <div class="inform" id="schedule-inform">
+        <p>
+          Oops! seems there is no subject in schedule <br />Please add a subject
+          to see schedule
+        </p>
       </div>
-    </div>
 
-    <div class="inform" id="schedule-inform">
-      <p>Oops! seems there is no subject in schedule <br>Please add a subject to see schedule</p>
-    </div>
-
-    <table id="schedule">
-      <thead>
-        <th>Today:</th>
-        <th>Upcoming Tomorrow:</th>
-      </thead>
-      <tbody>
-        <td>
-          <ul id="today-subject">
-            <li></li>
-          </ul>
-        </td>
-        <td>
-          <ul id="tomorrow-subject">
-            <li></li>
-          </ul>
-        </td>
-      </tbody>
-    </table>
-
-    <!-- TO DO BAR-->
+      <table id="schedule">
+        <thead>
+          <th>Today:</th>
+          <th>Upcoming Tomorrow:</th>
+        </thead>
+        <tbody>
+          <td>
+            <ul id="today-subject">
+              <li></li>
+            </ul>
+          </td>
+          <td>
+            <ul id="tomorrow-subject">
+              <li></li>
+            </ul>
+          </td>
+        </tbody>
+      </table>
+      
+  <!-- TO DO BAR-->
     <div class="row">
       <div class="to-do-column">
         <h1>To do</h1>
@@ -100,7 +107,6 @@
           <option>B</option>
         </select>
       </div>
-    </div>
 
     <table id="to-do">
       <thead>
@@ -113,33 +119,38 @@
         <th>27/04/2022</th>
         <th>Final Project</th>
         <th>COM ENG ESS</th>
-        <th><input type="checkbox"></th>
+        <th><input type="checkbox" /></th>
         <th><button id="remove-button">remove</button></th>
       </tbody>
     </table>
+
     <button class="add" id="add-assignment-button">&plus;</button>
     <div id="add-assignment" class="modal">
       <div class="modal-content">
         <span id="close-assignment-modal" class="close">&times;</span>
         <h2>Assignment</h2>
         <div class="assignment-inputs">
-          <input type="date" placeholder="dd/mm/yyyy">
-          <br>
-          <input type="text" placeholder="title">
-          <br>
+          <input type="text" placeholder="title" />
+          <br />
           <select name="Subject" id="subject list" form="subjectform">
             <option value="subject">subject (optional)</option>
             <option>A</option>
             <option>B</option>
           </select>
-          <br>
-          <textarea rows="5" cols="60" name="description (optional)">
-            Enter details here...
-          </textarea><br>
+          <br />
+          <input type="date" placeholder="dd/mm/yyyy" />
+          <br />
+          <textarea
+            id="description"
+            rows="5"
+            cols="10"
+            placeholder=" Enter details here..."
+          ></textarea>
+          <br />
         </div>
       </div>
     </div>
+    </div>
     <script type="module" src="script.js"></script>
-</body>
-
+  </body>
 </html>

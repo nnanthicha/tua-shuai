@@ -121,7 +121,8 @@ nav {
   font-size: 28px;
   font-weight: bold;
 }
-.close:hover, .close:focus {
+.close:hover,
+.close:focus {
   color: red;
   cursor: pointer;
 }
@@ -134,7 +135,7 @@ nav {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .modal-content {
   background-color: white;
@@ -142,7 +143,9 @@ nav {
   padding: 15px;
   border-radius: 5px;
   width: 60%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  max-height: 70%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  overflow: auto;
 }
 .add {
   font-family: "Fredoka One", cursive;
@@ -158,7 +161,7 @@ nav {
   margin-top: 20px;
 }
 
-.subject-form-input{
+.subject-form-input {
   border-radius: 5px;
   border: 1px solid gray;
   padding: 5px;
@@ -169,7 +172,7 @@ nav {
 
 .subject-form-input input {
   border-style: none;
-  background: rgba(0,0,0,0);
+  background: rgba(0, 0, 0, 0);
   padding: 5px;
 }
 
@@ -178,9 +181,19 @@ nav {
   color: #bbb;
 }
 
+#subject-list {
+  table-layout: fixed;
+  width: 100%;
+}
+
+#subject-list tr td{
+  /* border: 1px solid; */
+  padding: 10px 60px 10px 10px
+}
+
 .inform {
   width: 100%;
-  height: 150px;
+  height: 100px;
   margin: 10px 10px 10px 10px;
   text-align: center;
   padding-top: 100px;
@@ -225,8 +238,17 @@ nav {
   padding: 30px;
 }
 
-.assignment-inputs input,select,textarea{
+.assignment-inputs input,
+select,
+textarea {
   font-family: "Fredoka One", cursive;
   font-size: medium;
   margin-bottom: 15px;
+  padding: 5px;
+}
+
+#description {
+  padding: 5px;
+  resize: none;
+  width: 100%;
 }
