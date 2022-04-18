@@ -18,11 +18,11 @@
       <form class="login" id="username-form">
         <input
           id="username"
-          class="login__input"
+          class="login-input"
           type="text"
           placeholder="ID or username"
         />
-        <button class="login__button">&rarr;</button>
+        <button class="login-button">&rarr;</button>
       </form>
     </nav>
     <!-- QUOTE -->
@@ -46,6 +46,7 @@
           <button id="edit-schedule-button">edit</button>
         </div>
       </div>
+      <!-- EDIT SCHEDULE -->
       <div id="edit-schedule" class="modal">
         <div class="modal-content">
           <span class="close" id="close-schedule-modal-button">&times;</span>
@@ -84,7 +85,7 @@
           </table>
         </div>
       </div>
-
+      <!-- LOGIN WARNING POPUP -->
       <div id="login-warning" class="modal">
         <div class="modal-content">
           <p>
@@ -93,14 +94,14 @@
           </p>
         </div>
       </div>
-
+      <!-- NO SUBJECT WARNING  -->
       <div class="inform" id="schedule-inform">
         <p>
           Oops! seems there is no subject in schedule <br />Please add a subject
           to see schedule
         </p>
       </div>
-
+      <!-- SCHEDULE TABLE -->
       <table id="schedule">
         <thead>
           <th>Today:</th>
@@ -117,7 +118,7 @@
       </table>
     </div>
 
-    <!-- TO DO BAR-->
+    <!-- TO DO List -->
     <div class="main">
       <div class="row">
         <div class="to-do-column">
@@ -130,7 +131,7 @@
             <option>Tomorrow</option>
           </select>
         </div>
-
+        <!-- TO DO Table -->
         <table id="to-do">
           <thead>
             <th>dd/mm/yy</th>
@@ -148,7 +149,7 @@
           <th>COM ENG ESS</th>
           <th><button id="remove-button">Mark as done</button></th>
         </table>
-
+        <!-- Add TO DO -->
         <button class="add" id="add-assignment-button">&plus;</button>
         <div id="add-assignment" class="modal">
           <div class="modal-content">
