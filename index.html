@@ -14,8 +14,8 @@
         <img class="logo" alt="logo" src="assets/images/logo.svg" />
         <p class="webname">TUA SHUAI</p>
       </div>
-      <form class="login">
-        <input class="login__input" type="text" placeholder="ID or username" />
+      <form class="login" id="username-form">
+        <input id="username" class="login__input" type="text" placeholder="ID or username" />
         <button class="login__button">&rarr;</button>
       </form>
     </nav>
@@ -37,7 +37,17 @@
             <button id="add-button">&plus;</button>
           </div>
       </div>
+
+      <div id="login-warning" class="modal">
+        <div class="modal-content">
+          <p>It seems you are not login.<br>Please enter ID or username to enjoy Tua Shuai.</p>
+        </div>
+      </div>
       
+      <div class="inform" id="schedule-inform">
+        <p>Oops! seems there is no subject in schedule <br>Please add a subject to see schedule</p>
+      </div>
+
       <table id="schedule">
           <thead>
             <th>Today:</th>
@@ -50,12 +60,12 @@
               </ul>
             </td>
             <td>
-              <ul id="tomorow-subject">
+              <ul id="tomorrow-subject">
                 <li></li>
               </ul>
             </td>
           </tbody>
       </table>
-      <script src="script.js"></script>
+      <script type="module" src="script.js"></script>
   </body>
 </html>

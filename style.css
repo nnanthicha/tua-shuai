@@ -88,6 +88,7 @@ nav {
   margin: 20px 40px 20px 40px;
 }
 #schedule {
+  visibility: hidden;
   width: 100%;
   table-layout: fixed;
   margin: 10px 20px 10px 20px;
@@ -109,7 +110,7 @@ nav {
   width: 90px;
   height: 30px;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   background-color: rgb(45, 37, 106);
   color: white;
   float: right;
@@ -155,4 +156,12 @@ nav {
   color: white;
   cursor: pointer;
   margin-top: 20px;
+}
+
+.inform {
+  width: 100%;
+  height: 150px;
+  margin: 10px 10px 10px 10px;
+  text-align: center;
+  padding-top: 100px;
 }
