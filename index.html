@@ -138,16 +138,18 @@
             <th>Title</th>
             <th>Subject</th>
           </thead>
-          <tbody>
+          <tbody name="todo1">
             <th>27/04/2022</th>
             <th>Final Project</th>
             <th>COM ENG ESS</th>
-            <th><button id="remove-button">Mark as done</button></th>
+            <th><button id="remove-button" onclick="mark_done('todo1')">Mark as done</button></th>
           </tbody>
-          <th>27/04/2022</th>
-          <th>Final Project2</th>
-          <th>COM ENG ESS</th>
-          <th><button id="remove-button">Mark as done</button></th>
+          <tbody name="todo2">
+            <th>27/04/2022</th>
+            <th>Final Project2</th>
+            <th>COM ENG ESS</th>
+            <th><button id="remove-button" onclick="mark_done('todo2')">Mark as done</button></th>
+          </tbody>
         </table>
         <!-- Add TO DO -->
         <button class="add" id="add-assignment-button">&plus;</button>
