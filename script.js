@@ -24,7 +24,7 @@ const db = getFirestore();
 var currentUser;
 var editScheduleModal = document.getElementById("edit-schedule");
 var loginWarningModal = document.getElementById("login-warning");
-var addAssignmentModal = document.getElementById("add-assignment")
+var addAssignmentModal = document.getElementById("add-assignment");
 
 document.getElementById("username-form").addEventListener(
   "submit",
@@ -56,11 +56,11 @@ document.getElementById("edit-schedule-button").onclick = function () {
   }
 };
 
-document.getElementById("close-schedule-modal-button").onclick = function() {
+document.getElementById("close-schedule-modal-button").onclick = function () {
   editScheduleModal.style.display = "none";
 };
 
-document.getElementById("add-assignment-button").onclick = function() {
+document.getElementById("add-assignment-button").onclick = function () {
   if (currentUser) {
     addAssignmentModal.style.display = "block";
   } else {
@@ -68,7 +68,7 @@ document.getElementById("add-assignment-button").onclick = function() {
   }
 };
 
-document.getElementById("close-assignment-modal").onclick = function() {
+document.getElementById("close-assignment-modal").onclick = function () {
   addAssignmentModal.style.display = "none";
 };
 
@@ -77,8 +77,7 @@ window.onclick = function (event) {
     editScheduleModal.style.display = "none";
   } else if (event.target == loginWarningModal) {
     loginWarningModal.style.display = "none";
-  } else if(event.target == addAssignmentModal) {
-    addAssignmentModal.style.display = "none"
-  } 
+  } else if (event.target == addAssignmentModal) {
+    addAssignmentModal.style.display = "none";
+  }
 };
-
