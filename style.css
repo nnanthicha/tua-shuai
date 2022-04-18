@@ -15,6 +15,53 @@ nav {
   padding: 1rem;
   background-color: black;
 }
+@keyframes fade{
+  from{ opacity: 0;}
+  to{ opacity: 1;}
+}
+#schedule-png{
+  animation-name: fade;
+  animation-duration: 2.5s;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 2rem;
+  width: 15rem;
+}
+.header{
+  background-color: ghostwhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+.quote{
+  animation-name: fade;
+  animation-duration: 2.3s;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 40px;
+  padding-top: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  flex-direction: column;
+  border-style:solid;
+  border-radius: 10px;
+  border-color: #c8c8c8;
+  display: flex;
+  padding-top: 1.5rem;
+}
+#quote-author{
+  font-size: 1.2rem;
+  font-weight: 100;
+  color: #c8c8c8;
+  margin-left: auto;
+  margin-right: 1rem;
+}
 .webnamecontainer {
   display: flex;
   align-items: center;
