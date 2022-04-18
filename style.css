@@ -84,8 +84,8 @@ nav {
   content: "";
   display: table;
 }
-#main {
-  margin: 20px 40px 20px 40px;
+.main {
+  margin: 20px 40px 100px 40px;
 }
 #schedule {
   visibility: hidden;

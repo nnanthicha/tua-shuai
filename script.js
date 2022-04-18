@@ -51,6 +51,7 @@ document.getElementById("username-form").addEventListener(
       currentUser = null;
       alert("Invalid ID or username");
     }
+    drawSchedule();
   },
   false
 );
@@ -106,6 +107,7 @@ document
       endTime,
     });
     redrawSubjectList();
+    drawSchedule();
   });
 
 async function redrawSubjectList() {
@@ -132,4 +134,35 @@ window.deleteSubject = async (subId) => {
   const docRef = doc(db, "subjects/" + subId);
   await deleteDoc(docRef);
   redrawSubjectList();
+  drawSchedule();
+}
+
+async function drawSchedule() {
+  const d = new Date();
+  let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  let today = days[d.getDay()];
+  let tomorrow = days[(d.getDay() + 1) % 7];
+  const q = await getDocs(query(subjectRef, where("uid", "==", currentUser)));
+  if(!q.empty) {
+    document.getElementById("schedule-inform").style.display = "none";
+    document.getElementById("schedule").style.visibility = "visible";
+  }
+  else {
+    document.getElementById("schedule-inform").style.display = "block";
+    document.getElementById("schedule").style.visibility = "hidden";
+  }
+  const todaySubs = await getDocs(query(subjectRef, where("uid", "==", currentUser), where("day", "==", today)));
+  const todaySubList = document.getElementById("today-subject");
+  todaySubList.innerHTML = "";
+  todaySubs.forEach((sub) => {
+    console.log(sub.id, "=>", sub.data()); 
+    todaySubList.innerHTML += `<li style="margin-bottom:5px">${sub.data().startTime} - ${sub.data().endTime}<span style="margin-left:20px">${sub.data().subject}</span></li>`;
+  });
+  const tomrrSubs = await getDocs(query(subjectRef, where("uid", "==", currentUser), where("day", "==", tomorrow)));
+  const tomrrSubList = document.getElementById("tomorrow-subject");
+  tomrrSubList.innerHTML = "";
+  tomrrSubs.forEach((sub) => {
+    console.log(sub.id, "=>", sub.data()); 
+    tomrrSubList.innerHTML += `<li style="margin-bottom:5px">${sub.data().startTime} - ${sub.data().endTime}<span style="margin-left:20px">${sub.data().subject}</span></li>`;
+  });
 }
