@@ -20,6 +20,7 @@
       </form>
     </nav>
 
+    
     <!-- SCHEDULE -->
     <div id="main">
       <div class="row">
@@ -32,7 +33,7 @@
       </div>
       <div id="edit-schedule" class="modal">
           <div class="modal-content">
-            <span class="close">&times;</span>
+            <span id ="close" class="close-schedule-modal">&times;</span>
             <h2>Subjects</h2>
             <button id="add-button">&plus;</button>
           </div>
@@ -56,6 +57,61 @@
             </td>
           </tbody>
       </table>
+    
+    <!-- TO DO BAR-->
+      <div class="row">
+        <div class="to-do-column">
+          <h1>To do</h1>
+        </div>
+        <div class="column">
+          <select name="filter" id="filter-button">
+            <option value="">Filter</option>
+            <option>A</option>
+            <option>B</option>
+          </select>
+        </div>
+      </div>
+
+      <table id ="to-do">
+        <thead>
+          <th>dd/mm/yy</th>
+          <th>Title</th>
+          <th>Subject</th>
+          <th>Mark as done</th>
+        </thead>
+        <tbody>
+          <th>27/04/2022</th>
+          <th>Final Project</th>
+          <th>COM ENG ESS</th>
+          <th><input type="checkbox"></th>
+          <th><button id="remove-button">remove</button></th>
+        </tbody>
+      </table>
+      <button id="add-button" class = "add-assignment-button">&plus;</button>
+      <div id="add-assignment" class="modal">
+        <div class="modal-content">
+          <span class="close-assignment-modal" id="close">&times;</span>
+          <h2>Assignment</h2>
+          <div class="assignment-inputs">
+            <input type="date" placeholder="dd/mm/yyyy">
+          <br>
+          <input type="text" placeholder="title">
+          <br>
+          <select name="Subject" id="subject list" form="subjectform">
+            <option value="subject">subject (optional)</option>
+            <option>A</option>
+            <option>B</option>
+          </select>
+          <br>
+          <textarea rows = "5" cols = "60" name = "description (optional)">
+            Enter details here...
+          </textarea><br>
+          </div>
+        </div>
+    </div>
+
+      
       <script src="script.js"></script>
+      
   </body>
 </html>

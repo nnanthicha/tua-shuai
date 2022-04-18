@@ -115,12 +115,12 @@ nav {
   float: right;
   cursor: pointer;
 }
-.close {
+#close {
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
-.close:hover, .close:focus {
+#close:hover, #close:focus {
   color: red;
   cursor: pointer;
 }
@@ -156,3 +156,50 @@ nav {
   cursor: pointer;
   margin-top: 20px;
 }
+
+.to-do-column {
+  float: left;
+  width: 21%;
+  padding-bottom: 10px;
+}
+
+#to-do {
+  width: 100%;
+  table-layout: fixed;
+  margin: 10px 20px 10px 20px;
+  border-collapse: collapse;
+}
+
+#to-do th {
+  height: 40px;
+  text-align: left;
+}
+
+#filter-button {
+  font-family: "Fredoka One", cursive;
+  font-size: large;
+  cursor: pointer;
+}
+
+#remove-button {
+  font-family: "Fredoka One", cursive;
+  width: 90px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+.assignment-inputs {
+  padding: 30px;
+}
+
+.assignment-inputs input,select,textarea{
+  font-family: "Fredoka One", cursive;
+  font-size: medium;
+  margin-bottom: 15px;
+}
+
+
