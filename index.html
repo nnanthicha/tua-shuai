@@ -36,26 +36,32 @@
       <div class="modal-content">
         <span class="close" id="close-schedule-modal-button">&times;</span>
         <h2>Subjects</h2>
-        <form id="subject-form">
-          <input type="text" id="subject" class="subject-form-input" placeholder="subject">
-          <select id="day" class="subject-form-input">
-            <option value="" selected disabled hidden>day</option>
-            <option value="1">MON</option>
-            <option value="2">TUE</option>
-            <option value="3">WED</option>
-            <option value="4">THU</option>
-            <option value="5">FRI</option>
-          </select>
-          <span class="subject-form-input">
-            start
-            <input type="time" id="starting-time">
-          </span>
-          <span class="subject-form-input">
-            end
-            <input type="time" id="ending-time">
-          </span>
-          <button class="add" id="add-subject">&plus;</button>
-        </form>
+        <table id="user-subjects">
+          <thead></thead>
+          <tbody id="subject-list"></tbody>
+          <tfoot>
+            <form id="subject-form">
+              <input type="text" id="subject" class="subject-form-input" placeholder="subject" required>
+              <select id="day" class="subject-form-input" required>
+                <option value="" selected disabled hidden>day</option>
+                <option value="MON">MON</option>
+                <option value="TUE">TUE</option>
+                <option value="WED">WED</option>
+                <option value="THU">THU</option>
+                <option value="FRI">FRI</option>
+              </select>
+              <span class="subject-form-input">
+                start
+                <input type="time" id="starting-time" required>
+              </span>
+              <span class="subject-form-input">
+                end
+                <input type="time" id="ending-time" required>
+              </span>
+              <button class="add" id="add-subject">&plus;</button>
+            </form>
+          </tfoot>
+        </table>
       </div>
     </div>
 
