@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Fredoka+One&display=swap");
-
+@font-face {
+  font-family: Arabica-italic;
+  src: url(assets/fonts/Arabica-Italic.ttf);
+}
 * {
   margin: 0;
   padding: 0;
@@ -39,8 +42,8 @@ nav {
   animation-duration: 2.3s;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  font-style: italic;
-  font-size: 15px;
+  font-family: 'Arabica-italic';
+  font-size: 16px;
   line-height: 40px;
   padding-top: 1.5rem;
   padding-left: 1.5rem;
@@ -53,7 +56,6 @@ nav {
   border-radius: 10px;
   border-color: #c8c8c8;
   display: flex;
-  padding-top: 1.5rem;
 }
 #quote-author{
   font-size: 1.2rem;
