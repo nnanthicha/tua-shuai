@@ -115,13 +115,15 @@ async function redrawSubjectList() {
   subjectList.innerHTML = "";
   const q = await getDocs(query(subjectRef, where("uid", "==", currentUser)));
   q.forEach((sub) => {
-    console.log(sub.id, "=>", sub.data()); 
+    console.log(sub.id, "=>", sub.data());
     subjectList.innerHTML += `
     <tr id="${sub.id}">
       <td>${sub.data().subject}</td>
       <td>${sub.data().day}</td>
       <td>${sub.data().startTime} - ${sub.data().endTime}</td>
-      <td><button class="remove" id="remove-subject" onclick="deleteSubject('${sub.id}')">&minus;</button></td>
+      <td><button class="remove" id="remove-subject" onclick="deleteSubject('${
+        sub.id
+      }')">&minus;</button></td>
     </tr>`;
   });
   document.getElementById("subject").value = "";
@@ -135,7 +137,7 @@ window.deleteSubject = async (subId) => {
   await deleteDoc(docRef);
   redrawSubjectList();
   drawSchedule();
-}
+};
 
 async function drawSchedule() {
   const d = new Date();
@@ -143,26 +145,51 @@ async function drawSchedule() {
   let today = days[d.getDay()];
   let tomorrow = days[(d.getDay() + 1) % 7];
   const q = await getDocs(query(subjectRef, where("uid", "==", currentUser)));
-  if(!q.empty) {
+  if (!q.empty) {
     document.getElementById("schedule-inform").style.display = "none";
     document.getElementById("schedule").style.visibility = "visible";
-  }
-  else {
+  } else {
     document.getElementById("schedule-inform").style.display = "block";
     document.getElementById("schedule").style.visibility = "hidden";
   }
-  const todaySubs = await getDocs(query(subjectRef, where("uid", "==", currentUser), where("day", "==", today)));
+  const todaySubs = await getDocs(
+    query(
+      subjectRef,
+      where("uid", "==", currentUser),
+      where("day", "==", today)
+    )
+  );
   const todaySubList = document.getElementById("today-subject");
   todaySubList.innerHTML = "";
   todaySubs.forEach((sub) => {
-    console.log(sub.id, "=>", sub.data()); 
-    todaySubList.innerHTML += `<li style="margin-bottom:5px">${sub.data().startTime} - ${sub.data().endTime}<span style="margin-left:20px">${sub.data().subject}</span></li>`;
+    console.log(sub.id, "=>", sub.data());
+    todaySubList.innerHTML += `<li style="margin-bottom:5px">${
+      sub.data().startTime
+    } - ${sub.data().endTime}<span style="margin-left:20px">${
+      sub.data().subject
+    }</span></li>`;
   });
-  const tomrrSubs = await getDocs(query(subjectRef, where("uid", "==", currentUser), where("day", "==", tomorrow)));
+  const tomrrSubs = await getDocs(
+    query(
+      subjectRef,
+      where("uid", "==", currentUser),
+      where("day", "==", tomorrow)
+    )
+  );
   const tomrrSubList = document.getElementById("tomorrow-subject");
   tomrrSubList.innerHTML = "";
   tomrrSubs.forEach((sub) => {
-    console.log(sub.id, "=>", sub.data()); 
-    tomrrSubList.innerHTML += `<li style="margin-bottom:5px">${sub.data().startTime} - ${sub.data().endTime}<span style="margin-left:20px">${sub.data().subject}</span></li>`;
+    console.log(sub.id, "=>", sub.data());
+    tomrrSubList.innerHTML += `<li style="margin-bottom:5px">${
+      sub.data().startTime
+    } - ${sub.data().endTime}<span style="margin-left:20px">${
+      sub.data().subject
+    }</span></li>`;
   });
+}
+window.mark_done = mark_done;
+async function mark_done(name) {
+  const table = document.getElementsByName(name)[0];
+  table.remove();
+  console.log("test");
 }
