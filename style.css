@@ -3,20 +3,29 @@
   font-family: Arabica-italic;
   src: url(assets/fonts/Arabica-Italic.ttf);
 }
+@font-face {
+  font-family: Chocolateteehaypai;
+  src: url(assets/fonts/Chocolateteehaypai.ttf);
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
 }
+.quote-text{
+  color: #2b3137;
+}
 body {
+  color: #2b3137;
   font-family: "Fredoka One", cursive;
+  background-color: #ffffff;
 }
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: black;
+  background-color: #24292e;
 }
 @keyframes fade {
   from {
@@ -35,7 +44,8 @@ nav {
   width: 15rem;
 }
 .header {
-  background-color: ghostwhite;
+  border-bottom: #d0d7de solid 1px;
+  background-color: #f6f8fa;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,8 +56,9 @@ nav {
   animation-duration: 2.3s;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  font-family: 'Arabica-italic';
-  font-size: 16px;
+  font-family: 'Chocolateteehaypai';
+  font-size: 20px;
+  font-style: italic;
   line-height: 40px;
   padding-top: 1.5rem;
   padding-left: 1.5rem;
@@ -58,7 +69,7 @@ nav {
   flex-direction: column;
   border-style: solid;
   border-radius: 10px;
-  border-color: #c8c8c8;
+  border-color: #d0d7de;
   display: flex;
 }
 #quote-author {
