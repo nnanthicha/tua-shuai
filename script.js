@@ -199,14 +199,19 @@ async function drawSchedule() {
   );
   const todaySubList = document.getElementById("today-subject");
   todaySubList.innerHTML = "";
-  todaySubs.forEach((sub) => {
-    // console.log(sub.id, "=>", sub.data());
-    todaySubList.innerHTML += `<p style="margin-bottom:5px">${
-      sub.data().startTime
-    } - ${sub.data().endTime}<span style="margin-left:20px">${
-      sub.data().subject
-    }</span></p>`;
-  });
+  if(todaySubs.empty) {
+    todaySubList.innerHTML = `<p style="color: gray; margin-left: 10px;"> - - - - Relax!!! - - - -</p>`;
+  }
+  else {
+    todaySubs.forEach((sub) => {
+      // console.log(sub.id, "=>", sub.data());
+      todaySubList.innerHTML += `<p style="margin-bottom:5px">${
+        sub.data().startTime
+      } - ${sub.data().endTime}<span style="margin-left:20px">${
+        sub.data().subject
+      }</span></p>`;
+    });
+  }
   const tomrrSubs = await getDocs(
     query(
       subjectRef,
@@ -216,14 +221,19 @@ async function drawSchedule() {
   );
   const tomrrSubList = document.getElementById("tomorrow-subject");
   tomrrSubList.innerHTML = "";
-  tomrrSubs.forEach((sub) => {
-    // console.log(sub.id, "=>", sub.data());
-    tomrrSubList.innerHTML += `<p style="margin-bottom:5px">${
-      sub.data().startTime
-    } - ${sub.data().endTime}<span style="margin-left:20px">${
-      sub.data().subject
-    }</span></p>`;
-  });
+  if(tomrrSubs.empty) {
+    tomrrSubList.innerHTML = `<p style="color: gray; margin-left: 10px;"> - - - - Relax!!! - - - -</p>`;
+  }
+  else {
+    tomrrSubs.forEach((sub) => {
+      // console.log(sub.id, "=>", sub.data());
+      tomrrSubList.innerHTML += `<p style="margin-bottom:5px">${
+        sub.data().startTime
+      } - ${sub.data().endTime}<span style="margin-left:20px">${
+        sub.data().subject
+      }</span></p>`;
+    });
+  }
 }
 
 document.getElementById("add-todo-form").addEventListener("submit", async function (event) {
