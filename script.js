@@ -46,13 +46,13 @@ document.getElementById("username-form").addEventListener(
         console.log("create user");
       }
       currentUser = uid;
-      console.log("current user " + currentUser);
-      alert("You are login as " + currentUser);
+      console.log("login as " + currentUser);
+      alert("Login success");
       redrawSubjectList();
       redrawLoginForm(true);
     } else {
       currentUser = null;
-      alert("Invalid ID or username");
+      alert("Login failed. Invalid ID or username");
     }
     drawSchedule();
     drawTodo();
@@ -214,13 +214,6 @@ async function drawSchedule() {
   });
 }
 
-// window.mark_done = mark_done;
-// async function mark_done(name) {
-//   const table = document.getElementsByName(name)[0];
-//   table.remove();
-//   console.log("test");
-// }
-
 document.getElementById("add-todo-form").addEventListener("submit", async function (event) {
     event.preventDefault();
     let uid = currentUser;
@@ -257,7 +250,7 @@ async function drawTodo() {
       <td>${task.data().due}</td>
       <td>${task.data().title}</td>
       <td>${task.data().subject}</td>
-      <td><button class="mark-done-button" onclick="">Mark as done</button></td>
+      <td><button class="mark-done-button" onclick="deleteTask('${task.id}')">Mark as done</button></td>
     </tr>`;
   });
   document.getElementById("title").value = "";
@@ -265,3 +258,9 @@ async function drawTodo() {
   document.getElementById("due-date").value = "";
   document.getElementById("todo-description").value = "";
 }
+
+window.deleteTask = async (taskId) => {
+  const docRef = doc(db, "todos/" + taskId);
+  await deleteDoc(docRef);
+  drawTodo();
+};
