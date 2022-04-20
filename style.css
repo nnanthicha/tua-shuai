@@ -236,7 +236,6 @@ nav {
   background-color: rgb(45, 37, 106);
   color: white;
   cursor: pointer;
-  margin-top: 20px;
 }
 .remove {
   font-family: "Fredoka One", cursive;
@@ -249,7 +248,6 @@ nav {
   background-color: red;
   color: white;
   cursor: pointer;
-  margin-top: 20px;
 }
 .subject-form-input {
   border-radius: 5px;

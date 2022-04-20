@@ -15,6 +15,7 @@ import {
   setDoc,
   addDoc,
   deleteDoc,
+  updateDoc,
   collection,
   doc,
   getDoc,
@@ -221,12 +222,14 @@ document.getElementById("add-todo-form").addEventListener("submit", async functi
     let subject = document.getElementById("todo-subject").value;
     let due = document.getElementById("due-date").value;
     let description = document.getElementById("todo-description").value;
+    let done = false;
     await addDoc(todoRef, {
       uid,
       title,
       subject,
       due,
       description,
+      done,
     });
     addAssignmentModal.style.display = "none";
     drawTodo();
@@ -250,13 +253,34 @@ async function drawTodo() {
       <td>${task.data().due}</td>
       <td>${task.data().title}</td>
       <td>${task.data().subject}</td>
-      <td><button class="mark-done-button" onclick="deleteTask('${task.id}')">Mark as done</button></td>
+      <td><button id="button-${task.id}" class="mark-done-button" onclick="markDone('${task.id}')">Mark as done</button></td>
     </tr>`;
+    if(task.data().done) {
+      markDone(task.id);
+    }
   });
   document.getElementById("title").value = "";
   document.getElementById("todo-subject").value = "-";
   document.getElementById("due-date").value = "";
   document.getElementById("todo-description").value = "";
+}
+
+window.markDone = async (taskId) => {
+  const task = document.getElementById(taskId);
+  task.style.textDecoration = "line-through";
+  task.style.color = "rgb(189, 186, 186)";
+  task.innerHTML += `<td><button class="remove" id="remove-subject" onclick="deleteTask('${taskId}')">&minus;</button></td>`;
+  const button = document.getElementById("button-" + taskId);
+  button.innerHTML = "Undone";
+  button.style.backgroundColor = "gray";
+  button.setAttribute("onclick", "undone('" + taskId + "');");
+  
+  await updateDoc(doc(db, `todos/${taskId}`), { done: true });
+};
+
+window.undone = async (taskId) => {
+  await updateDoc(doc(db, `todos/${taskId}`), { done: false });
+  drawTodo();
 }
 
 window.deleteTask = async (taskId) => {
