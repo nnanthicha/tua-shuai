@@ -15,15 +15,21 @@
         <img class="logo" alt="logo" src="assets/images/logo.svg" />
         <p class="webname">TUA SHUAI</p>
       </div>
-      <form class="login" id="username-form">
-        <input
-          id="username"
-          class="login-input"
-          type="text"
-          placeholder="ID or username"
-        />
-        <button class="login-button">&rarr;</button>
-      </form>
+      <div id="user-info">
+        <form class="login" id="username-form">
+          <input
+            id="username"
+            class="login-input"
+            type="text"
+            placeholder="ID or username"
+          />
+          <button class="login-button">&rarr;</button>
+        </form>
+        <div id="user-login-info">
+          <p id="user-login" class="login-input"></p>
+          <button class="logout-button" onclick="logout()">logout</button>
+        </div>
+      </div> 
     </nav>
     <!-- QUOTE -->
     <div class="header">

@@ -48,6 +48,7 @@ document.getElementById("username-form").addEventListener(
       console.log("current user " + currentUser);
       alert("You are login as " + currentUser);
       redrawSubjectList();
+      redrawLoginForm(true);
     } else {
       currentUser = null;
       alert("Invalid ID or username");
@@ -56,6 +57,27 @@ document.getElementById("username-form").addEventListener(
   },
   false
 );
+
+function redrawLoginForm(isLogin) {
+  if(isLogin) {
+    document.getElementById("user-login-info").style.display = "block";
+    document.getElementById("user-login").innerHTML = currentUser;
+    document.getElementById("username-form").style.display = "none";
+  }
+  else {
+    document.getElementById("user-login-info").style.display = "none";
+    document.getElementById("username").value = "";
+    document.getElementById("username-form").style.display = "block";
+  }
+}
+
+window.logout = logout; 
+function logout() {
+  currentUser = null;
+  drawSchedule();
+  redrawLoginForm(false);
+  console.log("logout");
+}
 
 document.getElementById("edit-schedule-button").onclick = function () {
   if (currentUser) {

@@ -121,6 +121,9 @@ nav {
   margin-right: 1rem;
   color: inherit;
   border: 1px solid white;
+  background-color: whitesmoke;
+  float: left;
+  display: inline;
 }
 .login-input:focus {
   outline: none;
@@ -129,6 +132,25 @@ nav {
 .login-input::placeholder {
   font-family: "Fredoka One";
   color: #bbb;
+}
+#user-login-info {
+  display: none;
+}
+.logout-button {
+  float: left;
+  display: inline;
+  border: none;
+  font-family: "Fredoka One", cursive;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 4px;
+  margin-top: 5px;
+  color: white;
+}
+.logout-button:hover,
+.logout-button:focus {
+  cursor: pointer;
+  color: rgb(231, 90, 90);
 }
 .column {
   float: left;
