@@ -189,11 +189,11 @@ async function drawSchedule() {
   todaySubList.innerHTML = "";
   todaySubs.forEach((sub) => {
     // console.log(sub.id, "=>", sub.data());
-    todaySubList.innerHTML += `<li style="margin-bottom:5px">${
+    todaySubList.innerHTML += `<p style="margin-bottom:5px">${
       sub.data().startTime
     } - ${sub.data().endTime}<span style="margin-left:20px">${
       sub.data().subject
-    }</span></li>`;
+    }</span></p>`;
   });
   const tomrrSubs = await getDocs(
     query(
@@ -206,11 +206,11 @@ async function drawSchedule() {
   tomrrSubList.innerHTML = "";
   tomrrSubs.forEach((sub) => {
     // console.log(sub.id, "=>", sub.data());
-    tomrrSubList.innerHTML += `<li style="margin-bottom:5px">${
+    tomrrSubList.innerHTML += `<p style="margin-bottom:5px">${
       sub.data().startTime
     } - ${sub.data().endTime}<span style="margin-left:20px">${
       sub.data().subject
-    }</span></li>`;
+    }</span></p>`;
   });
 }
 
