@@ -27,6 +27,7 @@ import {
 
 const db = getFirestore();
 const subjectRef = collection(db, "subjects");
+const todoRef = collection(db, "todos");
 
 var currentUser;
 var editScheduleModal = document.getElementById("edit-schedule");
@@ -59,19 +60,18 @@ document.getElementById("username-form").addEventListener(
 );
 
 function redrawLoginForm(isLogin) {
-  if(isLogin) {
+  if (isLogin) {
     document.getElementById("user-login-info").style.display = "block";
     document.getElementById("user-login").innerHTML = currentUser;
     document.getElementById("username-form").style.display = "none";
-  }
-  else {
+  } else {
     document.getElementById("user-login-info").style.display = "none";
     document.getElementById("username").value = "";
     document.getElementById("username-form").style.display = "block";
   }
 }
 
-window.logout = logout; 
+window.logout = logout;
 function logout() {
   currentUser = null;
   drawSchedule();
@@ -211,9 +211,27 @@ async function drawSchedule() {
     }</span></li>`;
   });
 }
-window.mark_done = mark_done;
-async function mark_done(name) {
-  const table = document.getElementsByName(name)[0];
-  table.remove();
-  console.log("test");
-}
+
+// window.mark_done = mark_done;
+// async function mark_done(name) {
+//   const table = document.getElementsByName(name)[0];
+//   table.remove();
+//   console.log("test");
+// }
+
+document.getElementById("add-todo-form").addEventListener("submit", async function (event) {
+    event.preventDefault();
+    let uid = currentUser;
+    let title = document.getElementById("title").value;
+    let subject = document.getElementById("todo-subject").value;
+    let due = document.getElementById("due-date").value;
+    let description = document.getElementById("todo-description").value;
+    await addDoc(todoRef, {
+      uid,
+      title,
+      subject,
+      due,
+      description,
+    });
+    addAssignmentModal.style.display = "none";
+});

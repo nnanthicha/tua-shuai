@@ -182,7 +182,8 @@ nav {
 #schedule td ul li {
   word-break: break-word;
 }
-#edit-schedule-button {
+#edit-schedule-button,
+#add-todo-button {
   font-family: "Fredoka One", cursive;
   width: 90px;
   height: 30px;
@@ -323,7 +324,7 @@ textarea {
   margin-bottom: 15px;
   padding: 5px;
 }
-#description {
+#todo-description {
   padding: 5px;
   resize: none;
   width: 100%;
