@@ -294,7 +294,7 @@ window.markDone = async (taskId) => {
   document.getElementById("remove-button-" + taskId).innerHTML += `<button class="remove" id="remove-subject" onclick="deleteTask('${taskId}')">&minus;</button>`;
   const button = document.getElementById("button-" + taskId);
   button.innerHTML = "&check;";
-  button.style.backgroundColor = "green";
+  button.style.backgroundColor = "#2da44e";
   button.setAttribute("onclick", "undone('" + taskId + "');");
   
   await updateDoc(doc(db, `todos/${taskId}`), { done: true });
