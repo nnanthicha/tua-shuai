@@ -14,6 +14,8 @@ const app = initializeApp(firebaseConfig);
 import {
   setDoc,
   addDoc,
+  deleteDoc,
+  updateDoc,
   collection,
   doc,
   getDoc,
@@ -21,10 +23,12 @@ import {
   getFirestore,
   query,
   where,
+  orderBy,
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 
 const db = getFirestore();
 const subjectRef = collection(db, "subjects");
+const todoRef = collection(db, "todos");
 
 var currentUser;
 var editScheduleModal = document.getElementById("edit-schedule");
@@ -43,16 +47,40 @@ document.getElementById("username-form").addEventListener(
         console.log("create user");
       }
       currentUser = uid;
-      console.log("current user " + currentUser);
-      alert("You are login as " + currentUser);
+      console.log("login as " + currentUser);
+      alert("Login success");
       redrawSubjectList();
+      redrawLoginForm(true);
     } else {
       currentUser = null;
-      alert("Invalid ID or username");
+      alert("Login failed. Invalid ID or username");
     }
+    drawSchedule();
+    drawTodo();
   },
   false
 );
+
+function redrawLoginForm(isLogin) {
+  if (isLogin) {
+    document.getElementById("user-login-info").style.display = "block";
+    document.getElementById("user-login").innerHTML = currentUser;
+    document.getElementById("username-form").style.display = "none";
+  } else {
+    document.getElementById("user-login-info").style.display = "none";
+    document.getElementById("username").value = "";
+    document.getElementById("username-form").style.display = "block";
+  }
+}
+
+window.logout = logout;
+function logout() {
+  currentUser = null;
+  drawSchedule();
+  drawTodo();
+  redrawLoginForm(false);
+  console.log("logout");
+}
 
 document.getElementById("edit-schedule-button").onclick = function () {
   if (currentUser) {
@@ -105,6 +133,7 @@ document
       endTime,
     });
     redrawSubjectList();
+    drawSchedule();
   });
 
 async function redrawSubjectList() {
@@ -112,12 +141,15 @@ async function redrawSubjectList() {
   subjectList.innerHTML = "";
   const q = await getDocs(query(subjectRef, where("uid", "==", currentUser)));
   q.forEach((sub) => {
-    console.log(sub.id, "=>", sub.data()); 
+    // console.log(sub.id, "=>", sub.data());
     subjectList.innerHTML += `
     <tr id="${sub.id}">
       <td>${sub.data().subject}</td>
       <td>${sub.data().day}</td>
       <td>${sub.data().startTime} - ${sub.data().endTime}</td>
+      <td><button class="remove" id="remove-subject" onclick="deleteSubject('${
+        sub.id
+      }')">&minus;</button></td>
     </tr>`;
   });
   document.getElementById("subject").value = "";
@@ -125,3 +157,134 @@ async function redrawSubjectList() {
   document.getElementById("starting-time").value = "";
   document.getElementById("ending-time").value = "";
 }
+
+window.deleteSubject = async (subId) => {
+  const docRef = doc(db, "subjects/" + subId);
+  await deleteDoc(docRef);
+  redrawSubjectList();
+  drawSchedule();
+};
+
+async function drawSchedule() {
+  const d = new Date();
+  let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  let today = days[d.getDay()];
+  let tomorrow = days[(d.getDay() + 1) % 7];
+  const q = await getDocs(query(subjectRef, where("uid", "==", currentUser)));
+  if (!q.empty) {
+    document.getElementById("schedule-inform").style.display = "none";
+    document.getElementById("schedule").style.visibility = "visible";
+  } else {
+    document.getElementById("schedule-inform").style.display = "block";
+    document.getElementById("schedule").style.visibility = "hidden";
+  }
+  const todaySubs = await getDocs(
+    query(
+      subjectRef,
+      where("uid", "==", currentUser),
+      where("day", "==", today),
+      orderBy("startTime")
+    )
+  );
+  const todaySubList = document.getElementById("today-subject");
+  todaySubList.innerHTML = "";
+  todaySubs.forEach((sub) => {
+    // console.log(sub.id, "=>", sub.data());
+    todaySubList.innerHTML += `<p style="margin-bottom:5px">${
+      sub.data().startTime
+    } - ${sub.data().endTime}<span style="margin-left:20px">${
+      sub.data().subject
+    }</span></p>`;
+  });
+  const tomrrSubs = await getDocs(
+    query(
+      subjectRef,
+      where("uid", "==", currentUser),
+      where("day", "==", tomorrow)
+    )
+  );
+  const tomrrSubList = document.getElementById("tomorrow-subject");
+  tomrrSubList.innerHTML = "";
+  tomrrSubs.forEach((sub) => {
+    // console.log(sub.id, "=>", sub.data());
+    tomrrSubList.innerHTML += `<p style="margin-bottom:5px">${
+      sub.data().startTime
+    } - ${sub.data().endTime}<span style="margin-left:20px">${
+      sub.data().subject
+    }</span></p>`;
+  });
+}
+
+document.getElementById("add-todo-form").addEventListener("submit", async function (event) {
+    event.preventDefault();
+    let uid = currentUser;
+    let title = document.getElementById("title").value;
+    let subject = document.getElementById("todo-subject").value;
+    let due = document.getElementById("due-date").value;
+    let description = document.getElementById("todo-description").value;
+    let done = false;
+    await addDoc(todoRef, {
+      uid,
+      title,
+      subject,
+      due,
+      description,
+      done,
+    });
+    addAssignmentModal.style.display = "none";
+    drawTodo();
+});
+
+async function drawTodo() {
+  const q = await getDocs(query(todoRef, where("uid", "==", currentUser), orderBy("due")));
+  if (!q.empty) {
+    document.getElementById("todo-inform").style.display = "none";
+    document.getElementById("todo").style.visibility = "visible";
+  } else {
+    document.getElementById("todo-inform").style.display = "block";
+    document.getElementById("todo").style.visibility = "hidden";
+  }
+  const todoList = document.getElementById("todo-list");
+  todoList.innerHTML = "";
+  q.forEach((task) => {
+    // console.log(task.id, "=>", task.data());
+    todoList.innerHTML += `
+    <tr id="${task.id}">
+      <td>${task.data().due}</td>
+      <td>${task.data().title}</td>
+      <td>${task.data().subject}</td>
+      <td><button id="button-${task.id}" class="mark-done-button" onclick="markDone('${task.id}')">Mark as done</button></td>
+    </tr>`;
+    if(task.data().done) {
+      markDone(task.id);
+    }
+  });
+  document.getElementById("title").value = "";
+  document.getElementById("todo-subject").value = "-";
+  document.getElementById("due-date").value = "";
+  document.getElementById("todo-description").value = "";
+}
+
+window.markDone = async (taskId) => {
+  const task = document.getElementById(taskId);
+  task.style.textDecoration = "line-through";
+  task.style.color = "rgb(189, 186, 186)";
+  task.innerHTML += `<td><button class="remove" id="remove-subject" onclick="deleteTask('${taskId}')">&minus;</button></td>`;
+  const button = document.getElementById("button-" + taskId);
+  button.innerHTML = "Undone";
+  button.style.backgroundColor = "gray";
+  button.setAttribute("onclick", "undone('" + taskId + "');");
+  
+  await updateDoc(doc(db, `todos/${taskId}`), { done: true });
+};
+
+window.undone = async (taskId) => {
+  await updateDoc(doc(db, `todos/${taskId}`), { done: false });
+  drawTodo();
+}
+
+window.deleteTask = async (taskId) => {
+  const docRef = doc(db, "todos/" + taskId);
+  await deleteDoc(docRef);
+  drawTodo();
+};
