@@ -250,10 +250,11 @@ async function drawTodo() {
     // console.log(task.id, "=>", task.data());
     todoList.innerHTML += `
     <tr id="${task.id}">
-      <td>${task.data().due}</td>
+      <td><button id="button-${task.id}" class="mark-done-button" onclick="markDone('${task.id}')"></button></td>
+      <td style="text-align: center">${task.data().due}</td>
       <td>${task.data().title}</td>
       <td>${task.data().subject}</td>
-      <td><button id="button-${task.id}" class="mark-done-button" onclick="markDone('${task.id}')"></button></td>
+      <td id="remove-button-${task.id}" style="border: none"></td>
     </tr>`;
     if(task.data().done) {
       markDone(task.id);
@@ -269,7 +270,7 @@ window.markDone = async (taskId) => {
   const task = document.getElementById(taskId);
   task.style.textDecoration = "line-through";
   task.style.color = "rgb(189, 186, 186)";
-  task.innerHTML += `<td><button class="remove" id="remove-subject" onclick="deleteTask('${taskId}')">&minus;</button></td>`;
+  document.getElementById("remove-button-" + taskId).innerHTML += `<button class="remove" id="remove-subject" onclick="deleteTask('${taskId}')">&minus;</button>`;
   const button = document.getElementById("button-" + taskId);
   button.innerHTML = "&check;";
   button.style.backgroundColor = "green";
