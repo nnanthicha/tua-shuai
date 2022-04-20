@@ -312,6 +312,9 @@ nav {
   padding: 5px;
   text-align: left;
 }
+.title-text:hover {
+  cursor: pointer;
+}
 #filter-button {
   font-family: "Fredoka One", cursive;
   font-size: large;

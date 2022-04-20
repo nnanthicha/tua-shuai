@@ -34,6 +34,7 @@ var currentUser;
 var editScheduleModal = document.getElementById("edit-schedule");
 var loginWarningModal = document.getElementById("login-warning");
 var addAssignmentModal = document.getElementById("add-assignment");
+var todoDetailsModal = document.getElementById("todo-modal");
 
 document.getElementById("username-form").addEventListener(
   "submit",
@@ -106,6 +107,14 @@ document.getElementById("close-assignment-modal").onclick = function () {
   addAssignmentModal.style.display = "none";
 };
 
+document.getElementById("close-todo-modal").onclick = function () {
+  todoDetailsModal.style.display = "none";
+}
+
+document.getElementById("close-warning-button").onclick = function() {
+  loginWarningModal.style.display = "none";
+}
+
 window.onclick = function (event) {
   if (event.target == editScheduleModal) {
     editScheduleModal.style.display = "none";
@@ -113,6 +122,8 @@ window.onclick = function (event) {
     loginWarningModal.style.display = "none";
   } else if (event.target == addAssignmentModal) {
     addAssignmentModal.style.display = "none";
+  } else if(event.target == todoDetailsModal) {
+    todoDetailsModal.style.display = "none";
   }
 };
 
@@ -252,7 +263,7 @@ async function drawTodo() {
     <tr id="${task.id}">
       <td><button id="button-${task.id}" class="mark-done-button" onclick="markDone('${task.id}')"></button></td>
       <td style="text-align: center">${task.data().due}</td>
-      <td>${task.data().title}</td>
+      <td><p class="title-text" onclick="seeDetail('${task.id}')">${task.data().title}</p></td>
       <td>${task.data().subject}</td>
       <td id="remove-button-${task.id}" style="border: none"></td>
     </tr>`;
@@ -264,6 +275,16 @@ async function drawTodo() {
   document.getElementById("todo-subject").value = "-";
   document.getElementById("due-date").value = "";
   document.getElementById("todo-description").value = "";
+}
+
+window.seeDetail = async (taskId) => {
+  let modal = document.getElementById("todo-details");
+  const task = await getDoc(doc(db, "todos", taskId));
+  modal.innerHTML = `
+  <h2 style="margin-bottom: 5px">Details</h2>
+  <p>${task.data().description}</p>`;
+  console.log(task.data().description);
+  document.getElementById("todo-modal").style.display = "block";
 }
 
 window.markDone = async (taskId) => {
