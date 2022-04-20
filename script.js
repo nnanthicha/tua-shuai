@@ -253,7 +253,7 @@ async function drawTodo() {
       <td>${task.data().due}</td>
       <td>${task.data().title}</td>
       <td>${task.data().subject}</td>
-      <td><button id="button-${task.id}" class="mark-done-button" onclick="markDone('${task.id}')">Mark as done</button></td>
+      <td><button id="button-${task.id}" class="mark-done-button" onclick="markDone('${task.id}')"></button></td>
     </tr>`;
     if(task.data().done) {
       markDone(task.id);
@@ -271,8 +271,8 @@ window.markDone = async (taskId) => {
   task.style.color = "rgb(189, 186, 186)";
   task.innerHTML += `<td><button class="remove" id="remove-subject" onclick="deleteTask('${taskId}')">&minus;</button></td>`;
   const button = document.getElementById("button-" + taskId);
-  button.innerHTML = "Undone";
-  button.style.backgroundColor = "gray";
+  button.innerHTML = "&check;";
+  button.style.backgroundColor = "green";
   button.setAttribute("onclick", "undone('" + taskId + "');");
   
   await updateDoc(doc(db, `todos/${taskId}`), { done: true });

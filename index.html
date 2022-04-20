@@ -117,53 +117,55 @@
   <!-- TO DO List -->
   <div class="main">
     <div class="row">
-      <div class="todo-column">
+      <div class="column3">
         <h1>To do</h1>
       </div>
-      <div class="column">
+      <div class="column3">
         <select name="filter" id="filter-button">
           <option value="">Filter</option>
           <option>Today</option>
           <option>Tomorrow</option>
         </select>
       </div>
-      <!-- NO TODO WARNING -->
-      <div class="inform" id="todo-inform">
-        <p>
-          Alright! You're already done every assignment.
-        </p>
+      <div class="column3">
+        <button class="add" id="add-assignment-button">&plus;</button>
       </div>
-      <!-- TO DO Table -->
-      <table id="todo">
-        <thead>
-          <th>yyyy-mm-dd</th>
-          <th>Title</th>
-          <th>Subject</th>
-        </thead>
-        <tbody id="todo-list"></tbody>
-      </table>
-      <!-- Add TO DO -->
-      <button class="add" id="add-assignment-button">&plus;</button>
-      <div id="add-assignment" class="modal">
-        <div class="modal-content">
-          <span id="close-assignment-modal" class="close">&times;</span>
-          <h2>Assignment</h2>
-          <form class="assignment-inputs" id="add-todo-form">
-            <input id="title" type="text" placeholder="title" required/>
-            <br />
-            <select id="todo-subject">
-              <option value="-" selected disabled hidden>subject</option>
-              <option>A</option>
-              <option>B</option>
-            </select>
-            <br />
-            <input id="due-date" type="date" required/>
-            <br />
-            <textarea id="todo-description" rows="5" cols="10" placeholder=" Enter details here..."></textarea>
-            <br />
-            <button id="add-todo-button">done</button>
-          </form>
-        </div>
+    </div>
+    <!-- NO TODO WARNING -->
+    <div class="inform" id="todo-inform">
+      <p>
+        Alright! You're already done every assignment.
+      </p>
+    </div>
+    <!-- TO DO Table -->
+    <table id="todo">
+      <thead>
+        <th>yyyy-mm-dd</th>
+        <th>Title</th>
+        <th>Subject</th>
+      </thead>
+      <tbody id="todo-list"></tbody>
+    </table>
+    <!-- Add TO DO -->
+    <div id="add-assignment" class="modal">
+      <div class="modal-content">
+        <span id="close-assignment-modal" class="close">&times;</span>
+        <h2>Assignment</h2>
+        <form class="assignment-inputs" id="add-todo-form">
+          <input id="title" type="text" placeholder="title" required />
+          <br />
+          <select id="todo-subject">
+            <option value="-" selected disabled hidden>subject</option>
+            <option>A</option>
+            <option>B</option>
+          </select>
+          <br />
+          <input id="due-date" type="date" required />
+          <br />
+          <textarea id="todo-description" rows="5" cols="10" placeholder=" Enter details here..."></textarea>
+          <br />
+          <button id="add-todo-button">done</button>
+        </form>
       </div>
     </div>
   </div>
