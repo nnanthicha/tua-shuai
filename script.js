@@ -290,9 +290,16 @@ async function drawTodo() {
 window.seeDetail = async (taskId) => {
   let modal = document.getElementById("todo-details");
   const task = await getDoc(doc(db, "todos", taskId));
-  modal.innerHTML = `
-  <h2 style="margin-bottom: 5px">Details</h2>
-  <p>${task.data().description}</p>`;
+  if(!task.data().description) {
+    modal.innerHTML = `
+    <h2 style="margin-bottom: 5px">Details</h2>
+    <p>-</p>`;
+  }
+  else {
+    modal.innerHTML = `
+    <h2 style="margin-bottom: 5px">Details</h2>
+    <p>${task.data().description}</p>`;
+  }
   console.log(task.data().description);
   document.getElementById("todo-modal").style.display = "block";
 }
