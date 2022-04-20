@@ -22,6 +22,7 @@ import {
   getFirestore,
   query,
   where,
+  orderBy,
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 
 const db = getFirestore();
@@ -156,7 +157,8 @@ async function drawSchedule() {
     query(
       subjectRef,
       where("uid", "==", currentUser),
-      where("day", "==", today)
+      where("day", "==", today),
+      orderBy("startTime")
     )
   );
   const todaySubList = document.getElementById("today-subject");
