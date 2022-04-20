@@ -140,7 +140,7 @@ async function redrawSubjectList() {
   subjectList.innerHTML = "";
   const q = await getDocs(query(subjectRef, where("uid", "==", currentUser)));
   q.forEach((sub) => {
-    console.log(sub.id, "=>", sub.data());
+    // console.log(sub.id, "=>", sub.data());
     subjectList.innerHTML += `
     <tr id="${sub.id}">
       <td>${sub.data().subject}</td>
@@ -188,7 +188,7 @@ async function drawSchedule() {
   const todaySubList = document.getElementById("today-subject");
   todaySubList.innerHTML = "";
   todaySubs.forEach((sub) => {
-    console.log(sub.id, "=>", sub.data());
+    // console.log(sub.id, "=>", sub.data());
     todaySubList.innerHTML += `<li style="margin-bottom:5px">${
       sub.data().startTime
     } - ${sub.data().endTime}<span style="margin-left:20px">${
@@ -205,7 +205,7 @@ async function drawSchedule() {
   const tomrrSubList = document.getElementById("tomorrow-subject");
   tomrrSubList.innerHTML = "";
   tomrrSubs.forEach((sub) => {
-    console.log(sub.id, "=>", sub.data());
+    // console.log(sub.id, "=>", sub.data());
     tomrrSubList.innerHTML += `<li style="margin-bottom:5px">${
       sub.data().startTime
     } - ${sub.data().endTime}<span style="margin-left:20px">${
@@ -240,7 +240,7 @@ document.getElementById("add-todo-form").addEventListener("submit", async functi
 });
 
 async function drawTodo() {
-  const q = await getDocs(query(todoRef, where("uid", "==", currentUser)));
+  const q = await getDocs(query(todoRef, where("uid", "==", currentUser), orderBy("due")));
   if (!q.empty) {
     document.getElementById("todo-inform").style.display = "none";
     document.getElementById("todo").style.visibility = "visible";
@@ -251,7 +251,7 @@ async function drawTodo() {
   const todoList = document.getElementById("todo-list");
   todoList.innerHTML = "";
   q.forEach((task) => {
-    console.log(task.id, "=>", task.data());
+    // console.log(task.id, "=>", task.data());
     todoList.innerHTML += `
     <tr id="${task.id}">
       <td>${task.data().due}</td>
