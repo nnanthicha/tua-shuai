@@ -117,7 +117,7 @@
   <!-- TO DO List -->
   <div class="main">
     <div class="row">
-      <div class="to-do-column">
+      <div class="todo-column">
         <h1>To do</h1>
       </div>
       <div class="column">
@@ -127,33 +127,20 @@
           <option>Tomorrow</option>
         </select>
       </div>
+      <!-- NO TODO WARNING -->
+      <div class="inform" id="todo-inform">
+        <p>
+          Alright! You're already done every assignment.
+        </p>
+      </div>
       <!-- TO DO Table -->
-      <table id="to-do">
+      <table id="todo">
         <thead>
-          <th>dd/mm/yy</th>
+          <th>yyyy-mm-dd</th>
           <th>Title</th>
           <th>Subject</th>
         </thead>
-        <!-- <tbody name="todo1">
-          <th>27/04/2022</th>
-          <th>Final Project</th>
-          <th>COM ENG ESS</th>
-          <th>
-            <button id="remove-button" onclick="mark_done('todo1')">
-              Mark as done
-            </button>
-          </th>
-        </tbody>
-        <tbody name="todo2">
-          <th>27/04/2022</th>
-          <th>Final Project2</th>
-          <th>COM ENG ESS</th>
-          <th>
-            <button id="remove-button" onclick="mark_done('todo2')">
-              Mark as done
-            </button>
-          </th>
-        </tbody> -->
+        <tbody id="todo-list"></tbody>
       </table>
       <!-- Add TO DO -->
       <button class="add" id="add-assignment-button">&plus;</button>
@@ -165,12 +152,12 @@
             <input id="title" type="text" placeholder="title" required/>
             <br />
             <select id="todo-subject">
-              <option value="" selected disabled hidden>subject</option>
+              <option value="-" selected disabled hidden>subject</option>
               <option>A</option>
               <option>B</option>
             </select>
             <br />
-            <input id="due-date" type="date" placeholder="dd/mm/yyyy" required/>
+            <input id="due-date" type="date" required/>
             <br />
             <textarea id="todo-description" rows="5" cols="10" placeholder=" Enter details here..."></textarea>
             <br />

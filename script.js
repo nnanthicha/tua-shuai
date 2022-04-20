@@ -55,6 +55,7 @@ document.getElementById("username-form").addEventListener(
       alert("Invalid ID or username");
     }
     drawSchedule();
+    drawTodo();
   },
   false
 );
@@ -75,6 +76,7 @@ window.logout = logout;
 function logout() {
   currentUser = null;
   drawSchedule();
+  drawTodo();
   redrawLoginForm(false);
   console.log("logout");
 }
@@ -234,4 +236,32 @@ document.getElementById("add-todo-form").addEventListener("submit", async functi
       description,
     });
     addAssignmentModal.style.display = "none";
+    drawTodo();
 });
+
+async function drawTodo() {
+  const q = await getDocs(query(todoRef, where("uid", "==", currentUser)));
+  if (!q.empty) {
+    document.getElementById("todo-inform").style.display = "none";
+    document.getElementById("todo").style.visibility = "visible";
+  } else {
+    document.getElementById("todo-inform").style.display = "block";
+    document.getElementById("todo").style.visibility = "hidden";
+  }
+  const todoList = document.getElementById("todo-list");
+  todoList.innerHTML = "";
+  q.forEach((task) => {
+    console.log(task.id, "=>", task.data());
+    todoList.innerHTML += `
+    <tr id="${task.id}">
+      <td>${task.data().due}</td>
+      <td>${task.data().title}</td>
+      <td>${task.data().subject}</td>
+      <td><button class="mark-done-button" onclick="">Mark as done</button></td>
+    </tr>`;
+  });
+  document.getElementById("title").value = "";
+  document.getElementById("todo-subject").value = "-";
+  document.getElementById("due-date").value = "";
+  document.getElementById("todo-description").value = "";
+}
