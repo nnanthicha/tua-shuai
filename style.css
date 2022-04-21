@@ -155,11 +155,6 @@ nav {
 }
 .column {
   float: left;
-  width: 50%;
-}
-.column3 {
-  float: left;
-  width: 33%;
 }
 .row::after {
   clear: both;
@@ -260,7 +255,7 @@ nav {
   justify-content: center;
 }
 #add-assignment-button {
-  float: right;
+  margin-left: 20px;
 }
 .remove {
   font-family: "Fredoka One", cursive;
@@ -349,6 +344,7 @@ nav {
   font-family: "Fredoka One", cursive;
   font-size: large;
   cursor: pointer;
+  float: right;
 }
 .mark-done-button {
   font-family: "Fredoka One", cursive;
