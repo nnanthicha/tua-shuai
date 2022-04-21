@@ -225,8 +225,10 @@ async function drawDaySchedule(day, subList) {
   else {
     subs.forEach((sub) => {
       subList.innerHTML += `
-      <p style="margin-bottom:5px">${sub.data().startTime} - ${sub.data().endTime}
-      <span style="margin-left:20px">${sub.data().subject}</span></p>`;
+      <p style="margin-bottom:5px; float: left;">${sub.data().startTime} - ${sub.data().endTime}&nbsp;&nbsp;</p>
+      <p style="margin: 0 auto; width: 200px;">${sub.data().subject}</p>
+      <div style="clear: both;"></div>
+      `;
     });
   }
 }
