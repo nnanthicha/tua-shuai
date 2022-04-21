@@ -174,7 +174,7 @@ async function redrawSubjectList() {
       <td>${sub.data().startTime} - ${sub.data().endTime}</td>
       <td><button class="remove" id="remove-subject" onclick="deleteSubject('${
         sub.id
-      }')">&minus;</button></td>
+      }')"><img src="assets/images/trash.png" style="width: 20px; height: 20px;"></button></td>
     </tr>`;
   });
   document.getElementById("subject").value = "";
@@ -314,7 +314,10 @@ function changeStyleToDone(taskId) {
   const task = document.getElementById(taskId);
   task.style.textDecoration = "line-through";
   task.style.color = "rgb(189, 186, 186)";
-  document.getElementById("remove-button-" + taskId).innerHTML += `<button class="remove" id="remove-subject" onclick="deleteTask('${taskId}')">&minus;</button>`;
+  document.getElementById("remove-button-" + taskId).innerHTML += `
+  <button class="remove" id="remove-subject" onclick="deleteTask('${taskId}')">
+    <img src="assets/images/trash.png" style="width: 20px; height: 20px;">
+  </button>`;
   const button = document.getElementById("button-" + taskId);
   button.innerHTML = "&check;";
   button.style.backgroundColor = "#2da44e";
