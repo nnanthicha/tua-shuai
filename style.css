@@ -322,17 +322,23 @@ nav {
   max-width: 90%;
   /*margin: 10px 0px 10px 20px;*/
   border-collapse: collapse;
+  border-bottom: 2px #d0d7de solid;
 }
 #todo th {
   border-bottom: 2px solid #d0d7de;
   font-weight: lighter;
   padding-left: 5px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   height: 40px;
   text-align: left;
 }
 #todo tbody tr td{
   /*border: 1px solid;*/
-  padding: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   text-align: left;
 }
 .title-text:hover {
