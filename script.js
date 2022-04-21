@@ -275,7 +275,7 @@ async function drawTodo() {
       <td style="text-align: center">${task.data().due}</td>
       <td><p class="title-text" onclick="seeDetail('${task.id}')">${task.data().title}</p></td>
       <td>${task.data().subject}</td>
-      <td id="remove-button-${task.id}" style="border: none"></td>
+      <td id="remove-button-${task.id}"></td>
     </tr>`;
     if(task.data().done) {
       markDone(task.id);

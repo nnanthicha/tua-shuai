@@ -299,16 +299,13 @@ nav {
   width: 100%;
   table-layout: fixed;
   max-width: 90%;
-  margin: 10px 20px 5px 20px;
+  margin: 10px 0px 10px 20px;
   border-collapse: collapse;
 }
 #todo th {
   padding-left: 5px;
   height: 40px;
   text-align: left;
-}
-.first-col {
-  width: 50px;
 }
 #todo tbody tr td{
   padding: 5px;
