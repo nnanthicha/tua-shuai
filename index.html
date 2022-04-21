@@ -152,7 +152,7 @@
       <tbody id="todo-list">
         <colgroup>
           <col span="1" style="width: 50px; border-right: 1px solid #d0d7de" >
-          <col span="1" style="width: 130px; border-right: 1px solid #d0d7de">
+          <col span="1" style="width: 150px; border-right: 1px solid #d0d7de">
           <col span="1" style="width: 80%; border-right: 1px solid #d0d7de">
           <col span="1" style="width: 20%;">
           <col span="1" style="width: 50px;">
@@ -169,10 +169,12 @@
           <br />
           <select id="todo-subject"></select>
           <br />
-          <input id="due-date" type="date" required />
-          <br />
+          <div class = "container"><p>Due date</p>  
+            <input id="due-date" type="date" required />
+          </div>
+          <p>Description</p>
           <textarea id="todo-description" rows="5" cols="10" placeholder=" Enter details here..."></textarea>
-          <br />
+          <br >
           <button id="add-todo-button">done</button>
         </form>
       </div>
