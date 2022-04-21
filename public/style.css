@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Fredoka+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@500&display=swap');
 @font-face {
   font-family: Arabica-italic;
   src: url(assets/fonts/Arabica-Italic.ttf);
@@ -17,7 +18,7 @@
 }
 body {
   color: #24292f;
-  font-family: "Fredoka One", cursive;
+  font-family: "Fredoka One","Mitr", cursive;
   background-color: #ffffff;
 }
 nav {
@@ -25,7 +26,9 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  /* padding: 1rem 0rem 1rem 0rem; */
   background-color: #24292e;
+  max-width: 100vmax;
 }
 @keyframes fade {
   from {
@@ -50,6 +53,7 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
+  max-width: 100vmax;
 }
 .quote {
   animation-name: fade;
@@ -58,6 +62,7 @@ nav {
   margin-bottom: 3rem;
   font-family: 'Chocolateteehaypai';
   font-size: 20px;
+  font-optical-sizing: auto;
   font-style: italic;
   line-height: 40px;
   padding-top: 1.5rem;
@@ -105,7 +110,7 @@ nav {
   transition: all 0.5s;
   margin-right: 1rem;
 }
-.logi-button:hover,
+.login-button:hover,
 .login-button:focus {
   outline: none;
   color: gray;
@@ -137,6 +142,7 @@ nav {
   display: none;
 }
 .logout-button {
+  transition: 0.2s all;
   float: left;
   display: inline;
   border: none;
@@ -154,7 +160,6 @@ nav {
 }
 .column {
   float: left;
-  width: 50%;
 }
 .row::after {
   clear: both;
@@ -162,35 +167,57 @@ nav {
   display: table;
 }
 .main {
-  margin: 20px 40px 100px 40px;
+  margin: 2rem 40px 4rem 40px;
 }
 #schedule {
   visibility: hidden;
-  width: 100%;
+  width: 80vmax;
   table-layout: fixed;
-  margin: 10px 20px 10px 20px;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  /*margin: 10px 20px 10px 20px;*/
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-collapse: collapse;
 }
 #schedule th {
-  height: 60px;
-  text-align: left;
+  font-size: 1.4em;
+  font-weight: lighter;
+  color: white;
+  background: #2b3137;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  /*height: 60px;*/
+  text-align: center;
 }
 #schedule td {
+  border-left: 1px solid #d0d7de;
+  border-bottom: 1px solid #d0d7de;
+  border-right: 1px solid #d0d7de;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
   padding-right: 30px;
   vertical-align: top;
 }
 #schedule td ul li {
   word-break: break-word;
 }
-#edit-schedule-button,
-#add-todo-button {
+#edit-schedule-button:hover,
+.add:hover{
+  transition: 0.2s all;
+  background-color: #0969da;
+  color: white;
+}
+#edit-schedule-button {
+  font-size: 1em;
   font-family: "Fredoka One", cursive;
   width: 90px;
   height: 30px;
   border: none;
   border-radius: 20px;
-  background-color: rgb(45, 37, 106);
-  color: white;
+  background-color: #ddf4ff;
+  color: #0969da;
   float: right;
   cursor: pointer;
 }
@@ -220,32 +247,57 @@ nav {
   margin: auto;
   padding: 15px;
   border-radius: 5px;
-  width: 60%;
+  width: 50%;
   max-height: 70%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   overflow: auto;
 }
-.add {
+#add-todo-button:hover{
+  transition: 0.3s all;
+  opacity: 1;
+}
+#add-todo-button{
+  opacity: 0.9;
+  font-size: 1em;
   font-family: "Fredoka One", cursive;
-  font-size: 25px;
+  width: 90px;
+  height: 30px;
+  border: none;
+  border-radius: 20px;
+  border: 1px #2a9147 solid;
+  background-color: #2da44e;
+  color: white;
+  float: right;
+  cursor: pointer;
+}
+.add {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 0.9;
+  font-family: "Fredoka One", cursive;
+  font-size: 27px;
   text-align: center;
-  width: 40px;
-  height: 40px;
+  width: 37px;
+  height: 37px;
+  /*border: 1px #2a9147 solid;*/
   border: none;
   border-radius: 50%;
-  background-color: rgb(45, 37, 106);
-  color: white;
+  background-color: #ddf4ff;
+  color: #0969da;
   cursor: pointer;
+  justify-content: center;
+}
+#add-assignment-button {
+  margin-left: 20px;
 }
 .remove {
   font-family: "Fredoka One", cursive;
-  font-size: 25px;
+  /* font-size: 25px; */
   text-align: center;
-  width: 40px;
-  height: 40px;
-  border: none;
+  width: 23px;
+  height: 23px;
+  border: 1px solid gray;
   border-radius: 50%;
-  background-color: red;
+  background-color: rgb(231, 90, 90);
   color: white;
   cursor: pointer;
 }
@@ -287,31 +339,51 @@ nav {
   padding-bottom: 10px;
 }
 #todo {
+  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+  /*border: 1px solid;*/
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
   visibility: hidden;
-  width: 100%;
+  width: 80vmax;
   table-layout: fixed;
-  margin: 10px 20px 5px 20px;
+  /*margin: 10px 0px 10px 20px;*/
   border-collapse: collapse;
+  border-bottom: 2px #d0d7de solid;
 }
 #todo th {
+  border-bottom: 2px solid #d0d7de;
+  font-weight: lighter;
+  padding-left: 5px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   height: 40px;
   text-align: left;
 }
 #todo tbody tr td{
-  padding: 5px;
+  /*border: 1px solid;*/
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: left;
 }
-#filter-button {
+.title-text:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+#filter {
   font-family: "Fredoka One", cursive;
   font-size: large;
   cursor: pointer;
+  float: right;
 }
 .mark-done-button {
   font-family: "Fredoka One", cursive;
-  width: 120px;
-  height: 30px;
-  border: none;
-  border-radius: 20px;
-  background-color: green;
+  width: 20px;
+  height: 20px;
+  border: 1px solid gray;
+  border-radius: 50%;
   color: white;
   cursor: pointer;
 }
@@ -321,8 +393,10 @@ nav {
 .assignment-inputs input,
 select,
 textarea {
+  border-radius: 5px;
   font-family: "Fredoka One", cursive;
   font-size: medium;
+  margin-top: 5px;
   margin-bottom: 15px;
   padding: 5px;
 }
@@ -331,3 +405,16 @@ textarea {
   resize: none;
   width: 100%;
 }
+
+/* .container {
+  float: left; 
+  display: contents;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.container input{
+  
+  resize: horizontal;
+  overflow: hidden;
+} */
