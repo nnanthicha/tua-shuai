@@ -189,49 +189,31 @@ async function drawSchedule() {
     document.getElementById("schedule-inform").style.display = "block";
     document.getElementById("schedule").style.visibility = "hidden";
   }
-  const todaySubs = await getDocs(
+  const todaySubList = document.getElementById("today-subject");
+  drawDaySchedule(today, todaySubList);
+  const tmrSubList = document.getElementById("tomorrow-subject");
+  drawDaySchedule(tomorrow, tmrSubList);
+}
+
+async function drawDaySchedule(day, subList) {
+  const subs = await getDocs(
     query(
       subjectRef,
       where("uid", "==", currentUser),
-      where("day", "==", today),
+      where("day", "==", day),
       orderBy("startTime")
     )
   );
-  const todaySubList = document.getElementById("today-subject");
-  todaySubList.innerHTML = "";
-  if(todaySubs.empty) {
-    todaySubList.innerHTML = `<p style="color: gray; margin-left: 10px;"> - - - - Relax!!! - - - -</p>`;
+  subList.innerHTML = "";
+  if(subs.empty) {
+    subList.innerHTML = `<p style="color: gray; margin-left: 10px;"> - - - - Relax!!! - - - -</p>`;
   }
   else {
-    todaySubs.forEach((sub) => {
+    subs.forEach((sub) => {
       // console.log(sub.id, "=>", sub.data());
-      todaySubList.innerHTML += `<p style="margin-bottom:5px">${
-        sub.data().startTime
-      } - ${sub.data().endTime}<span style="margin-left:20px">${
-        sub.data().subject
-      }</span></p>`;
-    });
-  }
-  const tomrrSubs = await getDocs(
-    query(
-      subjectRef,
-      where("uid", "==", currentUser),
-      where("day", "==", tomorrow)
-    )
-  );
-  const tomrrSubList = document.getElementById("tomorrow-subject");
-  tomrrSubList.innerHTML = "";
-  if(tomrrSubs.empty) {
-    tomrrSubList.innerHTML = `<p style="color: gray; margin-left: 10px;"> - - - - Relax!!! - - - -</p>`;
-  }
-  else {
-    tomrrSubs.forEach((sub) => {
-      // console.log(sub.id, "=>", sub.data());
-      tomrrSubList.innerHTML += `<p style="margin-bottom:5px">${
-        sub.data().startTime
-      } - ${sub.data().endTime}<span style="margin-left:20px">${
-        sub.data().subject
-      }</span></p>`;
+      subList.innerHTML += `
+      <p style="margin-bottom:5px">${sub.data().startTime} - ${sub.data().endTime}
+      <span style="margin-left:20px">${sub.data().subject}</span></p>`;
     });
   }
 }
