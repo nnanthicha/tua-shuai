@@ -364,8 +364,8 @@ function createSubjectOpt() {
   if(subjectList.length != 0) {
     opt.innerHTML += `<option value="-">Other</option>`;
     filter.innerHTML += `
-    <option value="done">DONE</option>
-    <option value="undone">UNDONE</option>
+    <option value="done">- - DONE - -</option>
+    <option value="undone">- - UNDONE - -</option>
     <option value="-">Other</option>`;
   }
 }
