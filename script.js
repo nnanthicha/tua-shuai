@@ -220,7 +220,7 @@ async function drawDaySchedule(day, subList) {
   );
   subList.innerHTML = "";
   if(subs.empty) {
-    subList.innerHTML = `<p style="color: gray; margin-left: 10px;"> - - - - Relax!!! - - - -</p>`;
+    subList.innerHTML = `<p style="color: gray; text-align: center;"> - - - - Relax!!! - - - -</p>`;
   }
   else {
     subs.forEach((sub) => {

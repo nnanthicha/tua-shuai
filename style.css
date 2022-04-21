@@ -222,7 +222,9 @@ nav {
   cursor: pointer;
 }
 .close {
-  float: right;
+  position: absolute;
+  top: 105px;
+  right: 26%;
   font-size: 28px;
   font-weight: bold;
 }
@@ -286,6 +288,9 @@ nav {
   cursor: pointer;
   justify-content: center;
 }
+#add-subject {
+  float: left;
+}
 #add-assignment-button {
   margin-left: 20px;
 }
@@ -304,10 +309,13 @@ nav {
 .subject-form-input {
   border-radius: 5px;
   border: 1px solid gray;
-  padding: 5px;
+  padding: 1px 1px 1px 5px;
   margin: 7px 10px 7px 0px;
-  height: 20px;
+  height: fit-content;
+  min-height: 30px;
   font-family: "Fredoka One";
+  width: fit-content;
+  float: left;
 }
 .subject-form-input input {
   border-style: none;
@@ -318,13 +326,13 @@ nav {
   font-family: "Fredoka One";
   color: #bbb;
 }
-#subject-list {
-  table-layout: fixed;
+#user-subjects {
   width: 100%;
+  margin-top: 7px;
 }
 #subject-list tr td {
   /* border: 1px solid; */
-  padding: 10px 60px 10px 10px;
+  padding: 10px;
 }
 .inform {
   width: 100%;
