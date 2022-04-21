@@ -253,10 +253,10 @@ document.getElementById("add-todo-form").addEventListener("submit", async functi
     drawTodo();
 });
 
-async function drawTodo(filter) {
+async function drawTodo(field, filter) {
   let q;
-  if(filter) {
-    q = await getDocs(query(todoRef, where("uid", "==", currentUser), where("subject", "==", filter), orderBy("due")));
+  if(field) {
+    q = await getDocs(query(todoRef, where("uid", "==", currentUser), where(field, "==", filter), orderBy("due")));
   }
   else {
     q = await getDocs(query(todoRef, where("uid", "==", currentUser), orderBy("due")));
@@ -357,7 +357,10 @@ function createSubjectOpt() {
   });
   if(subjectList.length != 0) {
     opt.innerHTML += `<option value="-">Other</option>`;
-    filter.innerHTML += `<option value="-">Other</option>`;
+    filter.innerHTML += `
+    <option value="done">DONE</option>
+    <option value="undone">UNDONE</option>
+    <option value="-">Other</option>`;
   }
 }
 
@@ -366,7 +369,13 @@ document.getElementById("filter").onchange = function() {
   if(f == "All") {
     drawTodo();
   }
+  else if(f == "done") {
+    drawTodo("done", true);
+  }
+  else if(f == "undone") {
+    drawTodo("done", false);
+  }
   else {
-    drawTodo(f);
+    drawTodo("subject", f);
   }
 }
