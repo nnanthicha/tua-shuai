@@ -139,6 +139,7 @@ nav {
   display: none;
 }
 .logout-button {
+  transition: 0.2s all;
   float: left;
   display: inline;
   border: none;
@@ -156,11 +157,6 @@ nav {
 }
 .column {
   float: left;
-  width: 50%;
-}
-.column3 {
-  float: left;
-  width: 33%;
 }
 .row::after {
   clear: both;
@@ -204,15 +200,20 @@ nav {
 #schedule td ul li {
   word-break: break-word;
 }
-#edit-schedule-button,
-#add-todo-button {
+#edit-schedule-button:hover{
+  transition: 0.2s all;
+  background-color: #0969da;
+  color: white;
+}
+#edit-schedule-button {
+  font-size: 1em;
   font-family: "Fredoka One", cursive;
   width: 90px;
   height: 30px;
   border: none;
   border-radius: 20px;
-  background-color: rgb(45, 37, 106);
-  color: white;
+  background-color: #ddf4ff;
+  color: #0969da;
   float: right;
   cursor: pointer;
 }
@@ -247,21 +248,42 @@ nav {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   overflow: auto;
 }
-.add {
+.add:hover,
+#add-todo-button:hover{
+  transition: 0.3s all;
+  opacity: 1;
+}
+#add-todo-button{
+  opacity: 0.9;
+  font-size: 1em;
   font-family: "Fredoka One", cursive;
-  font-size: 25px;
-  text-align: center;
-  width: 35px;
-  height: 35px;
+  width: 90px;
+  height: 30px;
   border: none;
+  border-radius: 20px;
+  border: 1px #2a9147 solid;
+  background-color: #2da44e;
+  color: white;
+  float: right;
+  cursor: pointer;
+}
+.add {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 0.9;
+  font-family: "Fredoka One", cursive;
+  font-size: 27px;
+  text-align: center;
+  width: 37px;
+  height: 37px;
+  border: 1px #2a9147 solid;
   border-radius: 50%;
-  background-color: rgb(45, 37, 106);
+  background-color: #2da44e;
   color: white;
   cursor: pointer;
   justify-content: center;
 }
 #add-assignment-button {
-  float: right;
+  margin-left: 20px;
 }
 .remove {
   font-family: "Fredoka One", cursive;
@@ -347,10 +369,11 @@ nav {
   cursor: pointer;
   text-decoration: underline;
 }
-#filter-button {
+#filter {
   font-family: "Fredoka One", cursive;
   font-size: large;
   cursor: pointer;
+  float: right;
 }
 .mark-done-button {
   font-family: "Fredoka One", cursive;

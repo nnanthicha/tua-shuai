@@ -83,6 +83,7 @@ function logout() {
   subjectList = [];
   drawSchedule();
   drawTodo();
+  createSubjectOpt();
   redrawLoginForm(false);
   console.log("logout");
 }
@@ -120,6 +121,12 @@ document.getElementById("close-todo-modal").onclick = function () {
 
 document.getElementById("close-warning-button").onclick = function() {
   loginWarningModal.style.display = "none";
+}
+
+document.getElementById("filter").onclick = function() {
+  if(!currentUser) {
+    loginWarningModal.style.display = "block";
+  }
 }
 
 window.onclick = function (event) {
@@ -246,8 +253,14 @@ document.getElementById("add-todo-form").addEventListener("submit", async functi
     drawTodo();
 });
 
-async function drawTodo() {
-  const q = await getDocs(query(todoRef, where("uid", "==", currentUser), orderBy("due")));
+async function drawTodo(field, filter) {
+  let q;
+  if(field) {
+    q = await getDocs(query(todoRef, where("uid", "==", currentUser), where(field, "==", filter), orderBy("due")));
+  }
+  else {
+    q = await getDocs(query(todoRef, where("uid", "==", currentUser), orderBy("due")));
+  }
   if (!q.empty) {
     document.getElementById("todo-inform").style.display = "none";
     document.getElementById("todo").style.visibility = "visible";
@@ -326,14 +339,43 @@ async function getSubjectList() {
       subjectList.push(sub.data().subject);
     }
   });
+  createSubjectOpt();
 }
 
 function createSubjectOpt() {
   let opt = document.getElementById("todo-subject");
   opt.innerHTML = `<option value="-" selected disabled hidden>subject</option>`;
+  let filter = document.getElementById("filter");
+  filter.innerHTML = `<option value="" selected disabled hidden>Filter</option>`;
+  if(subjectList.length != 0) {
+    filter.innerHTML += `<option value="All">All</option>`;
+  }
   subjectList.forEach(function(sub) {
     let s = sub.charAt(0).toUpperCase() + sub.slice(1);
     opt.innerHTML += `<option value="${s}">${s}</option>`
+    filter.innerHTML += `<option value="${s}">${s}</option>`;
   });
-  opt.innerHTML += `<option value="other">Other</option>`;
+  if(subjectList.length != 0) {
+    opt.innerHTML += `<option value="-">Other</option>`;
+    filter.innerHTML += `
+    <option value="done">DONE</option>
+    <option value="undone">UNDONE</option>
+    <option value="-">Other</option>`;
+  }
+}
+
+document.getElementById("filter").onchange = function() {
+  let f = document.getElementById("filter").value;
+  if(f == "All") {
+    drawTodo();
+  }
+  else if(f == "done") {
+    drawTodo("done", true);
+  }
+  else if(f == "undone") {
+    drawTodo("done", false);
+  }
+  else {
+    drawTodo("subject", f);
+  }
 }

@@ -42,10 +42,10 @@
   <!-- SCHEDULE -->
   <div class="main">
     <div class="row">
-      <div class="column">
+      <div class="column" style="width: 50%;">
         <h1>Schedule</h1>
       </div>
-      <div class="column">
+      <div class="column" style="width: 50%;">
         <button id="edit-schedule-button">edit</button>
       </div>
     </div>
@@ -54,7 +54,7 @@
       <div class="modal-content">
         <span class="close" id="close-schedule-modal-button">&times;</span>
         <h2>Subjects</h2>
-        <form id="subject-form">
+      <form id="subject-form">
           <input type="text" id="subject" class="subject-form-input" placeholder="subject" required />
           <select id="day" class="subject-form-input" required>
             <option value="" selected disabled hidden>day</option>
@@ -120,17 +120,15 @@
   <!-- TO DO List -->
   <div class="main">
     <div class="row">
-      <div class="column3">
+      <div class="column" style="width: 85%;">
         <h1>To do</h1>
       </div>
-      <div class="column3">
-        <select name="filter" id="filter-button">
-          <option value="">Filter</option>
-          <option>Today</option>
-          <option>Tomorrow</option>
+      <div class="column" style="width: 10%;">
+        <select id="filter">
+          <option value="-" selected disabled hidden>Filter</option>
         </select>
       </div>
-      <div class="column3">
+      <div class="column" style="width: 5%;">
         <button class="add" id="add-assignment-button">&plus;</button>
       </div>
     </div>
