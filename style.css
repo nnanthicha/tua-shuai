@@ -145,7 +145,7 @@ nav {
   display: flex;
 }
 #user-login-info {
-  display: flex;
+  display: none;
 }
 .logout-button {
   transition: 0.2s all;

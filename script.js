@@ -68,13 +68,13 @@ document.getElementById("username-form").addEventListener(
 
 function redrawLoginForm(isLogin) {
   if (isLogin) {
-    document.getElementById("user-login-info").style.display = "block";
+    document.getElementById("user-login-info").style.display = "flex";
     document.getElementById("user-login").innerHTML = currentUser;
     document.getElementById("username-form").style.display = "none";
   } else {
     document.getElementById("user-login-info").style.display = "none";
     document.getElementById("username").value = "";
-    document.getElementById("username-form").style.display = "block";
+    document.getElementById("username-form").style.display = "flex";
   }
 }
 
