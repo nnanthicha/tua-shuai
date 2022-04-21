@@ -200,7 +200,8 @@ nav {
 #schedule td ul li {
   word-break: break-word;
 }
-#edit-schedule-button:hover{
+#edit-schedule-button:hover,
+.add:hover{
   transition: 0.2s all;
   background-color: #0969da;
   color: white;
@@ -248,7 +249,6 @@ nav {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   overflow: auto;
 }
-.add:hover,
 #add-todo-button:hover{
   transition: 0.3s all;
   opacity: 1;
@@ -275,10 +275,11 @@ nav {
   text-align: center;
   width: 37px;
   height: 37px;
-  border: 1px #2a9147 solid;
+  /*border: 1px #2a9147 solid;*/
+  border: none;
   border-radius: 50%;
-  background-color: #2da44e;
-  color: white;
+  background-color: #ddf4ff;
+  color: #0969da;
   cursor: pointer;
   justify-content: center;
 }
