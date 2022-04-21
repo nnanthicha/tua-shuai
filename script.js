@@ -31,6 +31,7 @@ const subjectRef = collection(db, "subjects");
 const todoRef = collection(db, "todos");
 
 var currentUser;
+var subjectList = [];
 var editScheduleModal = document.getElementById("edit-schedule");
 var loginWarningModal = document.getElementById("login-warning");
 var addAssignmentModal = document.getElementById("add-assignment");
@@ -50,14 +51,16 @@ document.getElementById("username-form").addEventListener(
       currentUser = uid;
       console.log("login as " + currentUser);
       alert("Login success");
-      redrawSubjectList();
       redrawLoginForm(true);
     } else {
       currentUser = null;
+      subjectList = [];
       alert("Login failed. Invalid ID or username");
     }
+    redrawSubjectList();
     drawSchedule();
     drawTodo();
+    getSubjectList();
   },
   false
 );
@@ -77,6 +80,7 @@ function redrawLoginForm(isLogin) {
 window.logout = logout;
 function logout() {
   currentUser = null;
+  subjectList = [];
   drawSchedule();
   drawTodo();
   redrawLoginForm(false);
@@ -93,11 +97,14 @@ document.getElementById("edit-schedule-button").onclick = function () {
 
 document.getElementById("close-schedule-modal-button").onclick = function () {
   editScheduleModal.style.display = "none";
+  getSubjectList();
 };
 
 document.getElementById("add-assignment-button").onclick = function () {
   if (currentUser) {
     addAssignmentModal.style.display = "block";
+    createSubjectOpt();
+    console.log(subjectList);
   } else {
     loginWarningModal.style.display = "block";
   }
@@ -118,6 +125,7 @@ document.getElementById("close-warning-button").onclick = function() {
 window.onclick = function (event) {
   if (event.target == editScheduleModal) {
     editScheduleModal.style.display = "none";
+    getSubjectList();
   } else if (event.target == loginWarningModal) {
     loginWarningModal.style.display = "none";
   } else if (event.target == addAssignmentModal) {
@@ -309,3 +317,23 @@ window.deleteTask = async (taskId) => {
   await deleteDoc(docRef);
   drawTodo();
 };
+
+async function getSubjectList() {
+  subjectList = [];
+  const q = await getDocs(query(subjectRef, where("uid", "==", currentUser)));
+  q.forEach((sub) => {
+    if(!subjectList.some(s => s.toLowerCase() == sub.data().subject.toLowerCase())) {
+      subjectList.push(sub.data().subject);
+    }
+  });
+}
+
+function createSubjectOpt() {
+  let opt = document.getElementById("todo-subject");
+  opt.innerHTML = `<option value="-" selected disabled hidden>subject</option>`;
+  subjectList.forEach(function(sub) {
+    let s = sub.charAt(0).toUpperCase() + sub.slice(1);
+    opt.innerHTML += `<option value="${s}">${s}</option>`
+  });
+  opt.innerHTML += `<option value="other">Other</option>`;
+}
