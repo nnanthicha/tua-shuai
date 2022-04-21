@@ -105,7 +105,6 @@ document.getElementById("add-assignment-button").onclick = function () {
   if (currentUser) {
     addAssignmentModal.style.display = "block";
     createSubjectOpt();
-    console.log(subjectList);
   } else {
     loginWarningModal.style.display = "block";
   }
@@ -281,7 +280,7 @@ async function drawTodo(field, filter) {
       <td id="remove-button-${task.id}" style="text-align: right"></td>
     </tr>`;
     if(task.data().done) {
-      markDone(task.id);
+      changeStyleToDone(task.id);
     }
   });
   document.getElementById("title").value = "";
@@ -303,11 +302,17 @@ window.seeDetail = async (taskId) => {
     <h2 style="margin-bottom: 5px">Details</h2>
     <p>${task.data().description}</p>`;
   }
-  console.log(task.data().description);
+  // console.log(task.data().description);
   document.getElementById("todo-modal").style.display = "block";
 }
 
 window.markDone = async (taskId) => {
+  changeStyleToDone(taskId);
+  await updateDoc(doc(db, `todos/${taskId}`), { done: true });
+  filterTodo();
+};
+
+function changeStyleToDone(taskId) {
   const task = document.getElementById(taskId);
   task.style.textDecoration = "line-through";
   task.style.color = "rgb(189, 186, 186)";
@@ -316,19 +321,17 @@ window.markDone = async (taskId) => {
   button.innerHTML = "&check;";
   button.style.backgroundColor = "#2da44e";
   button.setAttribute("onclick", "undone('" + taskId + "');");
-  
-  await updateDoc(doc(db, `todos/${taskId}`), { done: true });
-};
+}
 
 window.undone = async (taskId) => {
   await updateDoc(doc(db, `todos/${taskId}`), { done: false });
-  drawTodo();
+  filterTodo();
 }
 
 window.deleteTask = async (taskId) => {
   const docRef = doc(db, "todos/" + taskId);
   await deleteDoc(docRef);
-  drawTodo();
+  filterTodo();
 };
 
 async function getSubjectList() {
@@ -348,7 +351,7 @@ function createSubjectOpt() {
   let filter = document.getElementById("filter");
   filter.innerHTML = `<option value="" selected disabled hidden>Filter</option>`;
   if(subjectList.length != 0) {
-    filter.innerHTML += `<option value="All">All</option>`;
+    filter.innerHTML += `<option value="">All</option>`;
   }
   subjectList.forEach(function(sub) {
     let s = sub.charAt(0).toUpperCase() + sub.slice(1);
@@ -364,9 +367,10 @@ function createSubjectOpt() {
   }
 }
 
-document.getElementById("filter").onchange = function() {
+document.getElementById("filter").onchange = filterTodo;
+function filterTodo() {
   let f = document.getElementById("filter").value;
-  if(f == "All") {
+  if(f == "All" || f == "") {
     drawTodo();
   }
   else if(f == "done") {
