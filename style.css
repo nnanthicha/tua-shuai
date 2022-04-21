@@ -25,10 +25,10 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 1vw;
+  padding-left: 1rem;
   padding-right: 1vw;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   /* padding: 1rem 0rem 1rem 0rem; */
   background-color: #24292e;
 }
@@ -90,14 +90,14 @@ nav {
   align-items: center;
 }
 .webname {
-  font-size: 1.5vw;
+  font-size: 130%;
   color: white;
   font-family: "Fredoka One";
-  margin-left: 1vw;
+  margin-left: 0.7rem;
   cursor: default;
 }
 .logo {
-  height: 2vw;
+  height: 25px;
 }
 .login {
   display: flex;
@@ -105,7 +105,7 @@ nav {
 .login-button {
   border: none;
   background: none;
-  font-size: 2vw;
+  font-size: 200%;
   color: white;
   cursor: pointer;
   transition: all 0.5s;
@@ -117,13 +117,14 @@ nav {
   color: gray;
 }
 .login-input {
-  padding: 0.5vw 1vw;
-  font-size: 1vw;
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 100%;
   font-family: inherit;
   text-align: center;
-  width: 10vw;
+  width: 100%;
   border-radius: 5vw;
-  margin-right: 1vw;
+  margin-right: 1rem;
   color: inherit;
   border: 1px solid white;
   background-color: whitesmoke;
@@ -147,7 +148,7 @@ nav {
   display: inline;
   border: none;
   font-family: "Fredoka One", cursive;
-  font-size: 1rem;
+  font-size: 100%;
   background-color: rgba(0, 0, 0, 0);
   padding: 4px;
   margin-top: 5px;
