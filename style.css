@@ -139,6 +139,7 @@ nav {
   display: none;
 }
 .logout-button {
+  transition: 0.2s all;
   float: left;
   display: inline;
   border: none;
@@ -200,7 +201,7 @@ nav {
   word-break: break-word;
 }
 #edit-schedule-button:hover{
-  transition: 0.2s;
+  transition: 0.2s all;
   background-color: #0969da;
   color: white;
 }
