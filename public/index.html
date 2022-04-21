@@ -17,10 +17,10 @@
       <img class="logo" alt="logo" src="assets/images/logo.svg" />
       <p class="webname">TUA SHUAI</p>
       <a href="#schedule-ref">
-        <img src="assets/images/calendar.png" style="cursor: pointer; width: 3vw; padding-left: 2vw" >
+        <img src="assets/images/calendar.png" style="cursor: pointer; width: 2rem; padding-left: 2rem" >
       </a>
       <a href="#todo-ref">
-        <img src="assets/images/to-do-list.png" style="cursor: pointer; width: 3vw; padding-left: 1vw" >
+        <img src="assets/images/to-do-list.png" style="cursor: pointer; width: 2rem; padding-left: 1rem" >
       </a>
     </div>
     <div id="user-info">
@@ -62,7 +62,7 @@
       <div class="modal-content">
         <span class="close" id="close-schedule-modal-button">&times;</span>
         <h2>Subjects</h2>
-      <form id="subject-form">
+        <form id="subject-form">
           <input type="text" id="subject" class="subject-form-input" placeholder="subject" required />
           <select id="day" class="subject-form-input" required>
             <option value="" selected disabled hidden>day</option>
@@ -72,17 +72,23 @@
             <option value="THU">THU</option>
             <option value="FRI">FRI</option>
           </select>
-          <span class="subject-form-input">
+          <div class="subject-form-input">
             start
             <input type="time" id="starting-time" required />
-          </span>
-          <span class="subject-form-input">
+          </div>
+          <div class="subject-form-input">
             end
             <input type="time" id="ending-time" required />
-          </span>
+          </div>
           <button class="add" id="add-subject">&plus;</button>
         </form>
         <table id="user-subjects">
+          <colgroup>
+            <col span="1" style="width: 40%">
+            <col span="1" style="width: 15%">
+            <col span="1" style="width: 40%">
+            <col span="1" style="width: 5%;">
+          </colgroup>
           <tbody id="subject-list"></tbody>
         </table>
       </div>
@@ -108,10 +114,10 @@
     <table id="schedule">
       <thead>
         <th>
-            <img src="assets/images/today.png" style="width: 30px; margin-right: 8px">Today
+            <img src="assets/images/today.png" style="width: 30px; margin-right: 8px; vertical-align: -5px">Today
         </th>
         <th>
-          <img src="assets/images/tomorrow.png" style="width: 30px; margin-right: 10px">Upcoming Tomorrow</th>
+          <img src="assets/images/tomorrow.png" style="width: 30px; margin-right: 10px; vertical-align: -4px">Upcoming Tomorrow</th>
         </th>
       </thead>
       <tbody>

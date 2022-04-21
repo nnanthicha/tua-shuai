@@ -23,12 +23,13 @@ body {
 }
 nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding-left: 1vw;
+  padding-left: 1rem;
   padding-right: 1vw;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   /* padding: 1rem 0rem 1rem 0rem; */
   background-color: #24292e;
 }
@@ -88,16 +89,17 @@ nav {
 .webnamecontainer {
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
 }
 .webname {
-  font-size: 1.5vw;
+  font-size: 130%;
   color: white;
   font-family: "Fredoka One";
-  margin-left: 1vw;
+  margin-left: 0.7rem;
   cursor: default;
 }
 .logo {
-  height: 2vw;
+  height: 25px;
 }
 .login {
   display: flex;
@@ -105,7 +107,7 @@ nav {
 .login-button {
   border: none;
   background: none;
-  font-size: 2vw;
+  font-size: 200%;
   color: white;
   cursor: pointer;
   transition: all 0.5s;
@@ -117,13 +119,14 @@ nav {
   color: gray;
 }
 .login-input {
-  padding: 0.5vw 1vw;
-  font-size: 1vw;
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 100%;
   font-family: inherit;
   text-align: center;
-  width: 10vw;
+  width: 10rem;
   border-radius: 5vw;
-  margin-right: 1vw;
+  margin-right: 1rem;
   color: inherit;
   border: 1px solid white;
   background-color: whitesmoke;
@@ -138,16 +141,19 @@ nav {
   font-family: "Fredoka One";
   color: #bbb;
 }
+.user-info {
+  display: flex;
+}
 #user-login-info {
   display: none;
 }
 .logout-button {
   transition: 0.2s all;
-  float: left;
-  display: inline;
+  /* float: left;
+  display: inline; */
   border: none;
   font-family: "Fredoka One", cursive;
-  font-size: 1rem;
+  font-size: 100%;
   background-color: rgba(0, 0, 0, 0);
   padding: 4px;
   margin-top: 5px;
@@ -204,10 +210,11 @@ nav {
   word-break: break-word;
 }
 #edit-schedule-button:hover,
-.add:hover{
+.add:hover {
   transition: 0.2s all;
   background-color: #0969da;
   color: white;
+  cursor: pointer;
 }
 #edit-schedule-button {
   font-size: 1em;
@@ -219,10 +226,11 @@ nav {
   background-color: #ddf4ff;
   color: #0969da;
   float: right;
-  cursor: pointer;
 }
 .close {
-  float: right;
+  position: absolute;
+  top: 105px;
+  right: 26%;
   font-size: 28px;
   font-weight: bold;
 }
@@ -272,7 +280,6 @@ nav {
 }
 .add {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  opacity: 0.9;
   font-family: "Fredoka One", cursive;
   font-size: 27px;
   text-align: center;
@@ -283,31 +290,34 @@ nav {
   border-radius: 50%;
   background-color: #ddf4ff;
   color: #0969da;
-  cursor: pointer;
-  justify-content: center;
+}
+#add-subject {
+  float: left;
 }
 #add-assignment-button {
   margin-left: 20px;
 }
 .remove {
   font-family: "Fredoka One", cursive;
-  /* font-size: 25px; */
   text-align: center;
-  width: 23px;
-  height: 23px;
-  border: 1px solid gray;
+  width: 25px;
+  height: 25px;
+  border: none;
   border-radius: 50%;
-  background-color: rgb(231, 90, 90);
+  background-color: rgba(0, 0, 0, 0);
   color: white;
   cursor: pointer;
 }
 .subject-form-input {
   border-radius: 5px;
   border: 1px solid gray;
-  padding: 5px;
+  padding: 1px 1px 1px 5px;
   margin: 7px 10px 7px 0px;
-  height: 20px;
+  height: fit-content;
+  min-height: 30px;
   font-family: "Fredoka One";
+  width: fit-content;
+  float: left;
 }
 .subject-form-input input {
   border-style: none;
@@ -318,13 +328,13 @@ nav {
   font-family: "Fredoka One";
   color: #bbb;
 }
-#subject-list {
-  table-layout: fixed;
+#user-subjects {
   width: 100%;
+  margin-top: 7px;
 }
 #subject-list tr td {
   /* border: 1px solid; */
-  padding: 10px 60px 10px 10px;
+  padding: 10px;
 }
 .inform {
   width: 100%;
