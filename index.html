@@ -47,15 +47,11 @@
   </div>
   <!-- SCHEDULE -->
   <div class="main">
-    <div class="row">
-      <div class="column" style="width: 50%">
-        <h1 id="schedule-ref">
-          <img src="assets/images/calendar.png" style="width: 29px; padding-right: 0.3rem">
-          Schedule</h1>
-      </div>
-      <div class="column" style="width: 50%;">
-        <button id="edit-schedule-button">edit</button>
-      </div>
+    <div id="schedule-title">
+      <h1 id="schedule-ref" style="margin-bottom: 5px;">
+        <img src="assets/images/calendar.png" style="width: 29px; padding-right: 0.3rem">
+        Schedule</h1>
+      <button id="edit-schedule-button">edit</button>
     </div>
     <!-- EDIT SCHEDULE -->
     <div id="edit-schedule" class="modal">
@@ -133,16 +129,12 @@
 
   <!-- TO DO List -->
   <div class="main">
-    <div class="row">
-      <div class="column" style="width: 85%;">
-        <h1 id="todo-ref"><img src="assets/images/to-do-list.png" style="width: 29px; padding-right: 0.7rem">To do</h1>
-      </div>
-      <div class="column" style="width: 10%;">
+    <div id="todo-title">
+      <h1 id="todo-ref" style="margin-bottom: 5px;"><img src="assets/images/to-do-list.png" style="width: 29px; padding-right: 0.7rem">To do</h1>
+      <div id="todo-functional-box">
         <select id="filter">
           <option value="-" selected disabled hidden>Filter</option>
         </select>
-      </div>
-      <div class="column" style="width: 5%;">
         <button class="add" id="add-assignment-button">&plus;</button>
       </div>
     </div>
