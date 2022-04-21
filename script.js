@@ -32,6 +32,7 @@ const todoRef = collection(db, "todos");
 
 var currentUser;
 var subjectList = [];
+var currentFilter = "";
 var editScheduleModal = document.getElementById("edit-schedule");
 var loginWarningModal = document.getElementById("login-warning");
 var addAssignmentModal = document.getElementById("add-assignment");
@@ -166,7 +167,6 @@ async function redrawSubjectList() {
   subjectList.innerHTML = "";
   const q = await getDocs(query(subjectRef, where("uid", "==", currentUser)));
   q.forEach((sub) => {
-    // console.log(sub.id, "=>", sub.data());
     subjectList.innerHTML += `
     <tr id="${sub.id}">
       <td>${sub.data().subject}</td>
@@ -224,7 +224,6 @@ async function drawDaySchedule(day, subList) {
   }
   else {
     subs.forEach((sub) => {
-      // console.log(sub.id, "=>", sub.data());
       subList.innerHTML += `
       <p style="margin-bottom:5px">${sub.data().startTime} - ${sub.data().endTime}
       <span style="margin-left:20px">${sub.data().subject}</span></p>`;
@@ -249,7 +248,8 @@ document.getElementById("add-todo-form").addEventListener("submit", async functi
       done,
     });
     addAssignmentModal.style.display = "none";
-    drawTodo();
+    document.getElementById("filter").value = currentFilter;
+    filterTodo();
 });
 
 async function drawTodo(field, filter) {
@@ -270,7 +270,6 @@ async function drawTodo(field, filter) {
   const todoList = document.getElementById("todo-list");
   todoList.innerHTML = "";
   q.forEach((task) => {
-    // console.log(task.id, "=>", task.data());
     todoList.innerHTML += `
     <tr id="${task.id}" style="border-bottom: 1px solid #d0d7de">
       <td><button id="button-${task.id}" class="mark-done-button" onclick="markDone('${task.id}')"></button></td>
@@ -302,7 +301,6 @@ window.seeDetail = async (taskId) => {
     <h2 style="margin-bottom: 5px">Details</h2>
     <p>${task.data().description}</p>`;
   }
-  // console.log(task.data().description);
   document.getElementById("todo-modal").style.display = "block";
 }
 
@@ -370,6 +368,7 @@ function createSubjectOpt() {
 document.getElementById("filter").onchange = filterTodo;
 function filterTodo() {
   let f = document.getElementById("filter").value;
+  currentFilter = f;
   if(f == "All" || f == "") {
     drawTodo();
   }
