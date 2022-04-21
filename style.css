@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Fredoka+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@500&display=swap');
 @font-face {
   font-family: Arabica-italic;
   src: url(assets/fonts/Arabica-Italic.ttf);
@@ -17,7 +18,7 @@
 }
 body {
   color: #24292f;
-  font-family: "Fredoka One", cursive;
+  font-family: "Fredoka One","Mitr", cursive;
   background-color: #ffffff;
 }
 nav {
@@ -314,6 +315,7 @@ nav {
 #todo {
   /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
   /*border: 1px solid;*/
+  margin-top: 1.5rem;
   margin-left: auto;
   margin-right: auto;
   visibility: hidden;
