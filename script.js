@@ -356,8 +356,8 @@ function createSubjectOpt() {
     filter.innerHTML += `<option value="${s}">${s}</option>`;
   });
   if(subjectList.length != 0) {
-    opt.innerHTML += `<option value="other">Other</option>`;
-    filter.innerHTML += `<option value="other">Other</option>`;
+    opt.innerHTML += `<option value="-">Other</option>`;
+    filter.innerHTML += `<option value="-">Other</option>`;
   }
 }
 
