@@ -58,6 +58,7 @@ nav {
   margin-bottom: 3rem;
   font-family: 'Chocolateteehaypai';
   font-size: 20px;
+  font-optical-sizing: auto;
   font-style: italic;
   line-height: 40px;
   padding-top: 1.5rem;
@@ -166,20 +167,36 @@ nav {
   display: table;
 }
 .main {
-  margin: 20px 40px 100px 40px;
+  margin: 2rem 40px 4rem 40px;
 }
 #schedule {
   visibility: hidden;
-  width: 100%;
+  width: 80%;
   table-layout: fixed;
-  margin: 10px 20px 10px 20px;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  /*margin: 10px 20px 10px 20px;*/
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-collapse: collapse;
 }
 #schedule th {
-  height: 60px;
-  text-align: left;
+  font-size: 1.4em;
+  font-weight: lighter;
+  color: white;
+  background: #2b3137;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  /*height: 60px;*/
+  text-align: center;
 }
 #schedule td {
+  border-left: 1px solid #d0d7de;
+  border-bottom: 1px solid #d0d7de;
+  border-right: 1px solid #d0d7de;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
   padding-right: 30px;
   vertical-align: top;
 }
@@ -295,19 +312,26 @@ nav {
   padding-bottom: 10px;
 }
 #todo {
+  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+  /*border: 1px solid;*/
+  margin-left: auto;
+  margin-right: auto;
   visibility: hidden;
   width: 100%;
   table-layout: fixed;
   max-width: 90%;
-  margin: 10px 0px 10px 20px;
+  /*margin: 10px 0px 10px 20px;*/
   border-collapse: collapse;
 }
 #todo th {
+  border-bottom: 2px solid #d0d7de;
+  font-weight: lighter;
   padding-left: 5px;
   height: 40px;
   text-align: left;
 }
 #todo tbody tr td{
+  /*border: 1px solid;*/
   padding: 5px;
   text-align: left;
 }

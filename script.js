@@ -260,12 +260,12 @@ async function drawTodo() {
   q.forEach((task) => {
     // console.log(task.id, "=>", task.data());
     todoList.innerHTML += `
-    <tr id="${task.id}">
+    <tr id="${task.id}" style="border-bottom: 1px solid #d0d7de">
       <td><button id="button-${task.id}" class="mark-done-button" onclick="markDone('${task.id}')"></button></td>
       <td style="text-align: center">${task.data().due}</td>
       <td><p class="title-text" onclick="seeDetail('${task.id}')">${task.data().title}</p></td>
       <td>${task.data().subject}</td>
-      <td id="remove-button-${task.id}"></td>
+      <td id="remove-button-${task.id}" style="text-align: right"></td>
     </tr>`;
     if(task.data().done) {
       markDone(task.id);
