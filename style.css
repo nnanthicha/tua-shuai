@@ -23,6 +23,7 @@ body {
 }
 nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding-left: 1rem;
@@ -88,6 +89,7 @@ nav {
 .webnamecontainer {
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
 }
 .webname {
   font-size: 130%;
@@ -143,7 +145,7 @@ nav {
   display: flex;
 }
 #user-login-info {
-  display: none;
+  display: flex;
 }
 .logout-button {
   transition: 0.2s all;
