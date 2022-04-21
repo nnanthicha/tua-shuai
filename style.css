@@ -390,8 +390,10 @@ nav {
 .assignment-inputs input,
 select,
 textarea {
+  border-radius: 5px;
   font-family: "Fredoka One", cursive;
   font-size: medium;
+  margin-top: 5px;
   margin-bottom: 15px;
   padding: 5px;
 }
@@ -400,3 +402,16 @@ textarea {
   resize: none;
   width: 100%;
 }
+
+/* .container {
+  float: left; 
+  display: contents;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.container input{
+  
+  resize: horizontal;
+  overflow: hidden;
+} */
