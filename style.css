@@ -25,9 +25,12 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1rem ;
+  padding-left: 1rem;
+  padding-right: 1vw;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  /* padding: 1rem 0rem 1rem 0rem; */
   background-color: #24292e;
-  
 }
 @keyframes fade {
   from {
@@ -40,10 +43,10 @@ nav {
 #schedule-png {
   animation-name: fade;
   animation-duration: 2.5s;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  margin-left: 2rem;
-  width: 15rem;
+  margin-bottom: 3vw;
+  margin-top: 3vw;
+  margin-left: 2vw;
+  width: 16vw;
 }
 .header {
   border-bottom: #d0d7de solid 1px;
@@ -51,21 +54,21 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.5vw;
+  max-width: 100vmax;
 }
 .quote {
   animation-name: fade;
   animation-duration: 2.3s;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin-top: 3vw;
+  margin-bottom: 3vw;
   font-family: 'Chocolateteehaypai';
-  font-size: 20px;
-  font-optical-sizing: auto;
+  font-size: 1.5vw;
   font-style: italic;
-  line-height: 40px;
-  padding-top: 1.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  line-height: 3vw;
+  padding-top: 1.5vw;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
   justify-content: center;
   width: fit-content;
   height: fit-content;
@@ -76,25 +79,25 @@ nav {
   display: flex;
 }
 #quote-author {
-  font-size: 1.2rem;
+  font-size: 1.2vw;
   font-weight: 100;
   color: #c8c8c8;
   margin-left: auto;
-  margin-right: 1rem;
+  margin-right: 1vw;
 }
 .webnamecontainer {
   display: flex;
   align-items: center;
 }
 .webname {
-  font-size: 1.5rem;
+  font-size: 130%;
   color: white;
   font-family: "Fredoka One";
-  margin-left: 1rem;
+  margin-left: 0.7rem;
   cursor: default;
 }
 .logo {
-  height: 2rem;
+  height: 25px;
 }
 .login {
   display: flex;
@@ -102,11 +105,11 @@ nav {
 .login-button {
   border: none;
   background: none;
-  font-size: 2rem;
+  font-size: 200%;
   color: white;
   cursor: pointer;
   transition: all 0.5s;
-  margin-right: 1rem;
+  margin-right: 1vw;
 }
 .login-button:hover,
 .login-button:focus {
@@ -114,13 +117,13 @@ nav {
   color: gray;
 }
 .login-input {
-  border: none;
+  margin-left: 1rem;
   padding: 0.5rem 1rem;
-  font-size: 1rem;
+  font-size: 100%;
   font-family: inherit;
   text-align: center;
-  width: 10rem;
-  border-radius: 5rem;
+  width: 100%;
+  border-radius: 5vw;
   margin-right: 1rem;
   color: inherit;
   border: 1px solid white;
@@ -145,7 +148,7 @@ nav {
   display: inline;
   border: none;
   font-family: "Fredoka One", cursive;
-  font-size: 1rem;
+  font-size: 100%;
   background-color: rgba(0, 0, 0, 0);
   padding: 4px;
   margin-top: 5px;
@@ -169,7 +172,7 @@ nav {
 }
 #schedule {
   visibility: hidden;
-  width: 80%;
+  width: 80vmax;
   table-layout: fixed;
   margin-top: 2rem;
   margin-left: auto;
@@ -202,10 +205,11 @@ nav {
   word-break: break-word;
 }
 #edit-schedule-button:hover,
-.add:hover{
+.add:hover {
   transition: 0.2s all;
   background-color: #0969da;
   color: white;
+  cursor: pointer;
 }
 #edit-schedule-button {
   font-size: 1em;
@@ -217,10 +221,11 @@ nav {
   background-color: #ddf4ff;
   color: #0969da;
   float: right;
-  cursor: pointer;
 }
 .close {
-  float: right;
+  position: absolute;
+  top: 105px;
+  right: 26%;
   font-size: 28px;
   font-weight: bold;
 }
@@ -270,7 +275,6 @@ nav {
 }
 .add {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  opacity: 0.9;
   font-family: "Fredoka One", cursive;
   font-size: 27px;
   text-align: center;
@@ -281,31 +285,34 @@ nav {
   border-radius: 50%;
   background-color: #ddf4ff;
   color: #0969da;
-  cursor: pointer;
-  justify-content: center;
+}
+#add-subject {
+  float: left;
 }
 #add-assignment-button {
   margin-left: 20px;
 }
 .remove {
   font-family: "Fredoka One", cursive;
-  /* font-size: 25px; */
   text-align: center;
-  width: 23px;
-  height: 23px;
-  border: 1px solid gray;
+  width: 25px;
+  height: 25px;
+  border: none;
   border-radius: 50%;
-  background-color: rgb(231, 90, 90);
+  background-color: rgba(0, 0, 0, 0);
   color: white;
   cursor: pointer;
 }
 .subject-form-input {
   border-radius: 5px;
   border: 1px solid gray;
-  padding: 5px;
+  padding: 1px 1px 1px 5px;
   margin: 7px 10px 7px 0px;
-  height: 20px;
+  height: fit-content;
+  min-height: 30px;
   font-family: "Fredoka One";
+  width: fit-content;
+  float: left;
 }
 .subject-form-input input {
   border-style: none;
@@ -316,13 +323,13 @@ nav {
   font-family: "Fredoka One";
   color: #bbb;
 }
-#subject-list {
-  table-layout: fixed;
+#user-subjects {
   width: 100%;
+  margin-top: 7px;
 }
 #subject-list tr td {
   /* border: 1px solid; */
-  padding: 10px 60px 10px 10px;
+  padding: 10px;
 }
 .inform {
   width: 100%;
@@ -343,9 +350,8 @@ nav {
   margin-left: auto;
   margin-right: auto;
   visibility: hidden;
-  width: 100%;
+  width: 80vmax;
   table-layout: fixed;
-  max-width: 90%;
   /*margin: 10px 0px 10px 20px;*/
   border-collapse: collapse;
   border-bottom: 2px #d0d7de solid;
