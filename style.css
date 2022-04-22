@@ -1,38 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Fredoka+One&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@500&display=swap');
+
 @font-face {
   font-family: Arabica-italic;
   src: url(assets/fonts/Arabica-Italic.ttf);
 }
+
 @font-face {
   font-family: Chocolateteehaypai;
   src: url(assets/fonts/Chocolateteehaypai.ttf);
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
 }
-.quote-text{
+
+.quote-text {
   color: #2b3137;
 }
+
 body {
   color: #24292f;
-  font-family: "Fredoka One","Mitr", cursive;
+  font-family: "Fredoka One", "Mitr", cursive;
   background-color: #ffffff;
 }
+
 nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding-left: 1rem;
-  padding-right: 1vw;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  /* padding: 1rem 0rem 1rem 0rem; */
+  padding: 1rem 1vw 1rem 1rem;
   background-color: #24292e;
 }
+
 @keyframes fade {
   from {
     opacity: 0;
@@ -41,6 +44,7 @@ nav {
     opacity: 1;
   }
 }
+
 #schedule-png {
   animation-name: fade;
   animation-duration: 2.5s;
@@ -49,6 +53,7 @@ nav {
   margin-left: 2vw;
   width: 16vw;
 }
+
 .header {
   border-bottom: #d0d7de solid 1px;
   background-color: #f6f8fa;
@@ -58,12 +63,13 @@ nav {
   padding: 0.5vw;
   max-width: 100vmax;
 }
+
 .quote {
   animation-name: fade;
   animation-duration: 2.3s;
   margin-top: 3vw;
   margin-bottom: 3vw;
-  font-family: 'Chocolateteehaypai';
+  font-family: 'Chocolateteehaypai', sans-serif;
   font-size: 1.5vw;
   font-style: italic;
   line-height: 3vw;
@@ -79,6 +85,7 @@ nav {
   border-color: #d0d7de;
   display: flex;
 }
+
 #quote-author {
   font-size: 1.2vw;
   font-weight: 100;
@@ -86,24 +93,29 @@ nav {
   margin-left: auto;
   margin-right: 1vw;
 }
-.webnamecontainer {
+
+.web-name-container {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
 }
-.webname {
+
+.web-name {
   font-size: 130%;
   color: white;
-  font-family: "Fredoka One";
+  font-family: "Fredoka One", cursive;
   margin-left: 0.7rem;
   cursor: default;
 }
+
 .logo {
   height: 25px;
 }
+
 .login {
   display: flex;
 }
+
 .login-button {
   border: none;
   background: none;
@@ -113,11 +125,13 @@ nav {
   transition: all 0.5s;
   margin-right: 1vw;
 }
+
 .login-button:hover,
 .login-button:focus {
   outline: none;
   color: gray;
 }
+
 .login-input {
   margin-left: 1rem;
   padding: 0.5rem 1rem;
@@ -133,24 +147,27 @@ nav {
   float: left;
   display: inline;
 }
+
 .login-input:focus {
   outline: none;
   border: 1px solid gray;
 }
+
 .login-input::placeholder {
-  font-family: "Fredoka One";
+  font-family: "Fredoka One", cursive;
   color: #bbb;
 }
+
 .user-info {
   display: flex;
 }
+
 #user-login-info {
   display: none;
 }
+
 .logout-button {
   transition: 0.2s all;
-  /* float: left;
-  display: inline; */
   border: none;
   font-family: "Fredoka One", cursive;
   font-size: 100%;
@@ -159,14 +176,17 @@ nav {
   margin-top: 5px;
   color: white;
 }
+
 .logout-button:hover,
 .logout-button:focus {
   cursor: pointer;
   color: rgb(231, 90, 90);
 }
+
 .main {
   margin: 2rem 40px 4rem 40px;
 }
+
 #schedule-title,
 #todo-title {
   display: flex;
@@ -174,10 +194,12 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
+
 #todo-functional-box {
   display: flex;
   margin-left: 5px;
 }
+
 #schedule {
   visibility: hidden;
   width: 80vmax;
@@ -185,10 +207,10 @@ nav {
   margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
-  /*margin: 10px 20px 10px 20px;*/
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-collapse: collapse;
 }
+
 #schedule th {
   font-size: 1.4em;
   font-weight: lighter;
@@ -196,22 +218,21 @@ nav {
   background: #2b3137;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  /*height: 60px;*/
   text-align: center;
 }
+
 #schedule td {
   border-left: 1px solid #d0d7de;
   border-bottom: 1px solid #d0d7de;
   border-right: 1px solid #d0d7de;
-  padding-left: 1rem;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-  padding-right: 30px;
+  padding: 1rem 30px 1rem 1rem;
   vertical-align: top;
 }
+
 #schedule td ul li {
   word-break: break-word;
 }
+
 #edit-schedule-button:hover,
 .add:hover {
   transition: 0.2s all;
@@ -219,6 +240,7 @@ nav {
   color: white;
   cursor: pointer;
 }
+
 #edit-schedule-button {
   font-size: 1em;
   font-family: "Fredoka One", cursive;
@@ -229,8 +251,9 @@ nav {
   background-color: #ddf4ff;
   color: #0969da;
   float: right;
-  margin-left: 5px ;
+  margin-left: 5px;
 }
+
 .close {
   position: absolute;
   top: 105px;
@@ -238,11 +261,13 @@ nav {
   font-size: 28px;
   font-weight: bold;
 }
+
 .close:hover,
 .close:focus {
   color: red;
   cursor: pointer;
 }
+
 .modal {
   display: none;
   position: fixed;
@@ -254,6 +279,7 @@ nav {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal-content {
   background-color: white;
   margin: auto;
@@ -264,17 +290,18 @@ nav {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   overflow: auto;
 }
-#add-todo-button:hover{
+
+#add-todo-button:hover {
   transition: 0.3s all;
   opacity: 1;
 }
-#add-todo-button{
+
+#add-todo-button {
   opacity: 0.9;
   font-size: 1em;
   font-family: "Fredoka One", cursive;
   width: 90px;
   height: 30px;
-  border: none;
   border-radius: 20px;
   border: 1px #2a9147 solid;
   background-color: #2da44e;
@@ -282,6 +309,7 @@ nav {
   float: right;
   cursor: pointer;
 }
+
 .add {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-family: "Fredoka One", cursive;
@@ -289,18 +317,20 @@ nav {
   text-align: center;
   width: 37px;
   height: 37px;
-  /*border: 1px #2a9147 solid;*/
   border: none;
   border-radius: 50%;
   background-color: #ddf4ff;
   color: #0969da;
 }
+
 #add-subject {
   float: left;
 }
+
 #add-assignment-button {
   margin-left: 20px;
 }
+
 .remove {
   font-family: "Fredoka One", cursive;
   text-align: center;
@@ -312,34 +342,43 @@ nav {
   color: white;
   cursor: pointer;
 }
+
 .subject-form-input {
   border-radius: 5px;
   border: 1px solid gray;
   padding: 1px 1px 1px 5px;
-  margin: 7px 10px 7px 0px;
+  margin: 7px 10px 7px 0;
   height: fit-content;
   min-height: 30px;
-  font-family: "Fredoka One";
+  font-family: "Fredoka One", cursive;
   width: fit-content;
   float: left;
 }
+
 .subject-form-input input {
   border-style: none;
   background: rgba(0, 0, 0, 0);
   padding: 5px;
 }
+
 .subject-form-input::placeholder {
-  font-family: "Fredoka One";
+  font-family: "Fredoka One", cursive;
   color: #bbb;
 }
+
 #user-subjects {
   width: 100%;
   margin-top: 7px;
+  border-bottom: 2px solid #d0d7de;
+  border-top: 2px solid #d0d7de;
+}
+#subject-list td {
+ border-bottom: 1px solid #d0d7de;
 }
 #subject-list tr td {
-  /* border: 1px solid; */
   padding: 10px;
 }
+
 .inform {
   width: 100%;
   height: 50px;
@@ -347,11 +386,12 @@ nav {
   text-align: center;
   padding-top: 100px;
 }
+
 .table {
   overflow-x: hidden;
 }
+
 #todo {
-  /*border: 1px solid;*/
   margin-top: 1.5rem;
   margin-left: auto;
   margin-right: auto;
@@ -361,33 +401,33 @@ nav {
   border-collapse: collapse;
   border-bottom: 2px #d0d7de solid;
 }
+
 #todo th {
   border-bottom: 2px solid #d0d7de;
   font-weight: lighter;
-  padding-left: 5px;
   padding-left: 1rem;
   padding-right: 1rem;
   height: 40px;
   text-align: left;
 }
-#todo tbody tr td{
-  /*border: 1px solid;*/
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 1rem;
-  padding-right: 1rem;
+
+#todo tbody tr td {
+  padding: 5px 1rem;
   text-align: left;
 }
+
 .title-text:hover {
   cursor: pointer;
   text-decoration: underline;
 }
+
 #filter {
   font-family: "Fredoka One", cursive;
   font-size: large;
   cursor: pointer;
   float: right;
 }
+
 .mark-done-button {
   font-family: "Fredoka One", cursive;
   width: 20px;
@@ -397,9 +437,11 @@ nav {
   color: white;
   cursor: pointer;
 }
+
 .assignment-inputs {
   padding: 30px;
 }
+
 .assignment-inputs input,
 select,
 textarea {
@@ -410,21 +452,9 @@ textarea {
   margin-bottom: 15px;
   padding: 5px;
 }
+
 #todo-description {
   padding: 5px;
   resize: none;
   width: 100%;
 }
-
-/* .container {
-  float: left; 
-  display: contents;
-  align-items: baseline;
-  margin-bottom: 20px;
-}
-
-.container input{
-  
-  resize: horizontal;
-  overflow: hidden;
-} */

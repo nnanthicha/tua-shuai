@@ -2,199 +2,204 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel = "icon" href ="assets/images/logo-black.svg" type = "image/x-icon">
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="assets/images/logo-black.svg" type="image/x-icon">
   <title>TUA SHUAI</title>
 </head>
 
 <body>
-  <!-- TOP NAVIGATION BAR -->
-  <nav>
-    <div class="webnamecontainer">
-      <img class="logo" alt="logo" src="assets/images/logo.svg" />
-      <p class="webname">TUA SHUAI</p>
-      <a href="#schedule-ref">
-        <img src="assets/images/calendar.png" style="cursor: pointer; width: 2rem; padding-left: 2rem" >
-      </a>
-      <a href="#todo-ref">
-        <img src="assets/images/to-do-list.png" style="cursor: pointer; width: 2rem; padding-left: 1rem" >
-      </a>
+<!-- TOP NAVIGATION BAR -->
+<nav>
+  <div class="web-name-container">
+    <img class="logo" alt="logo" src="assets/images/logo.svg"/>
+    <p class="web-name">TUA SHUAI</p>
+    <a href="#schedule-ref">
+      <img src="assets/images/calendar.png" style="cursor: pointer; width: 2rem; padding-left: 2rem" alt="schedule">
+    </a>
+    <a href="#todo-ref">
+      <img src="assets/images/to-do-list.png" style="cursor: pointer; width: 2rem; padding-left: 1rem" alt="todo">
+    </a>
+  </div>
+  <div id="user-info">
+    <form class="login" id="username-form">
+      <label for="username"></label><input id="username" class="login-input" type="text" placeholder="ID or username"/>
+      <button class="login-button">&rarr;</button>
+    </form>
+    <div id="user-login-info">
+      <p id="user-login" class="login-input"></p>
+      <button class="logout-button" onclick="logout()">Logout</button>
     </div>
-    <div id="user-info">
-      <form class="login" id="username-form">
-        <input id="username" class="login-input" type="text" placeholder="ID or username" />
-        <button class="login-button">&rarr;</button>
+  </div>
+</nav>
+<!-- QUOTE -->
+<div class="header">
+  <div class="quote">
+    <h1 class="quote-text">
+      "One of the secrets of getting more done <br/>is to make a TO-DO List
+      every day, <br/>keep it visible"
+    </h1>
+    <h3 id="quote-author">Alan Lakein</h3>
+  </div>
+  <img src="assets/images/schedule.png" id="schedule-png" alt="schedule"/>
+</div>
+<!-- SCHEDULE -->
+<div class="main">
+  <div id="schedule-title">
+    <h1 id="schedule-ref" style="margin-bottom: 5px;">
+      <img src="assets/images/calendar.png" style="width: 29px; padding-right: 0.3rem" alt="schedule">
+      Schedule</h1>
+    <button id="edit-schedule-button">edit</button>
+  </div>
+  <!-- EDIT SCHEDULE -->
+  <div id="edit-schedule" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-schedule-modal-button">&times;</span>
+      <h2>Subjects</h2>
+      <form id="subject-form">
+        <label for="subject"></label><input type="text" id="subject" class="subject-form-input" placeholder="subject"
+                                            required/>
+        <label for="day"></label><select id="day" class="subject-form-input" required>
+        <option value="" selected disabled hidden>day</option>
+        <option value="MON">MON</option>
+        <option value="TUE">TUE</option>
+        <option value="WED">WED</option>
+        <option value="THU">THU</option>
+        <option value="FRI">FRI</option>
+      </select>
+        <div class="subject-form-input">
+          start
+          <label for="starting-time"></label><input type="time" id="starting-time" required/>
+        </div>
+        <div class="subject-form-input">
+          end
+          <label for="ending-time"></label><input type="time" id="ending-time" required/>
+        </div>
+        <button class="add" id="add-subject">&plus;</button>
       </form>
-      <div id="user-login-info">
-        <p id="user-login" class="login-input"></p>
-        <button class="logout-button" onclick="logout()">Logout</button>
-      </div>
-    </div>
-  </nav>
-  <!-- QUOTE -->
-  <div class="header">
-    <div class="quote">
-      <h1 class="quote-text">
-        "One of the secrets of getting more done <br />is to make a TO-DO List
-        every day, <br />keep it visible"
-      </h1>
-      <h3 id="quote-author">Alan Lakein</h3>
-    </div>
-    <img src="assets/images/schedule.png" id="schedule-png" />
-  </div>
-  <!-- SCHEDULE -->
-  <div class="main">
-    <div id="schedule-title">
-      <h1 id="schedule-ref" style="margin-bottom: 5px;">
-        <img src="assets/images/calendar.png" style="width: 29px; padding-right: 0.3rem">
-        Schedule</h1>
-      <button id="edit-schedule-button">edit</button>
-    </div>
-    <!-- EDIT SCHEDULE -->
-    <div id="edit-schedule" class="modal">
-      <div class="modal-content">
-        <span class="close" id="close-schedule-modal-button">&times;</span>
-        <h2>Subjects</h2>
-        <form id="subject-form">
-          <input type="text" id="subject" class="subject-form-input" placeholder="subject" required />
-          <select id="day" class="subject-form-input" required>
-            <option value="" selected disabled hidden>day</option>
-            <option value="MON">MON</option>
-            <option value="TUE">TUE</option>
-            <option value="WED">WED</option>
-            <option value="THU">THU</option>
-            <option value="FRI">FRI</option>
-          </select>
-          <div class="subject-form-input">
-            start
-            <input type="time" id="starting-time" required />
-          </div>
-          <div class="subject-form-input">
-            end
-            <input type="time" id="ending-time" required />
-          </div>
-          <button class="add" id="add-subject">&plus;</button>
-        </form>
-        <table id="user-subjects">
-          <colgroup>
-            <col span="1" style="width: 40%">
-            <col span="1" style="width: 15%">
-            <col span="1" style="width: 40%">
-            <col span="1" style="width: 5%;">
-          </colgroup>
-          <tbody id="subject-list"></tbody>
-        </table>
-      </div>
-    </div>
-    <!-- LOGIN WARNING POPUP -->
-    <div id="login-warning" class="modal">
-      <div class="modal-content">
-        <span class="close" id="close-warning-button">&times;</span>
-        <p>
-          It seems you are not login.<br />Please enter ID or username to
-          enjoy Tua Shuai.
-        </p>
-      </div>
-    </div>
-    <!-- NO SUBJECT WARNING  -->
-    <div class="inform" id="schedule-inform">
-      <p>
-        Oops! seems there is no subject in schedule <br />Please add a subject
-        to see schedule
-      </p>
-    </div>
-    <!-- SCHEDULE TABLE -->
-    <div class="table">
-      <table id="schedule">
-        <thead>
-          <th>
-              <img src="assets/images/today.png" style="width: 30px; margin-right: 8px; vertical-align: -5px">Today
-          </th>
-          <th>
-            <img src="assets/images/tomorrow.png" style="width: 30px; margin-right: 10px; vertical-align: -4px">Upcoming Tomorrow</th>
-          </th>
-        </thead>
-        <tbody>
-          <td>
-            <ul id="today-subject"></ul>
-          </td>
-          <td>
-            <ul id="tomorrow-subject"></ul>
-          </td>
-        </tbody>
+      <table id="user-subjects" style="border-collapse: collapse">
+        <colgroup>
+          <col span="1" style="width: 40%">
+          <col span="1" style="width: 15%">
+          <col span="1" style="width: 40%">
+          <col span="1" style="width: 5%;">
+        </colgroup>
+        <tbody id="subject-list"></tbody>
       </table>
     </div>
   </div>
+  <!-- LOGIN WARNING POPUP -->
+  <div id="login-warning" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-warning-button">&times;</span>
+      <p>
+        It seems you are not login.<br/>Please enter ID or username to
+        enjoy Tua Shuai.
+      </p>
+    </div>
+  </div>
+  <!-- NO SUBJECT WARNING  -->
+  <div class="inform" id="schedule-inform">
+    <p>
+      Oops! seems there is no subject in schedule <br/>Please add a subject
+      to see schedule
+    </p>
+  </div>
+  <!-- SCHEDULE TABLE -->
+  <div class="table">
+    <table id="schedule">
+      <thead>
+      <th>
+        <img src="assets/images/today.png" style="width: 30px; margin-right: 8px; vertical-align: -5px" alt="today">Today
+      </th>
+      <th>
+        <img src="assets/images/tomorrow.png" style="width: 30px; margin-right: 10px; vertical-align: -4px"
+             alt="tomorrow">Upcoming
+        Tomorrow
+      </th>
+      </thead>
+      <tbody>
+      <td>
+        <ul id="today-subject"></ul>
+      </td>
+      <td>
+        <ul id="tomorrow-subject"></ul>
+      </td>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-  <!-- TO DO List -->
-  <div class="main">
-    <div id="todo-title">
-      <h1 id="todo-ref" style="margin-bottom: 5px;"><img src="assets/images/to-do-list.png" style="width: 29px; padding-right: 0.7rem">To do</h1>
-      <div id="todo-functional-box">
-        <select id="filter">
-          <option value="-" selected disabled hidden>Filter</option>
-        </select>
-        <button class="add" id="add-assignment-button">&plus;</button>
-      </div>
-    </div>
-    <!-- NO TODO WARNING -->
-    <div class="inform" id="todo-inform">
-      <p>
-        Alright! You're already done every assignment.
-      </p>
-    </div>
-    <!-- TO DO Table -->
-    <div class="table">
-      <table id="todo">
-        <thead>
-          <th></th>
-          <th style="text-align: center">Due date</th>
-          <th>Title</th>
-          <th>Subject</th>
-          <th></th>
-        </thead>
-        <tbody id="todo-list">
-          <colgroup>
-            <col span="1" style="width: 50px; border-right: 1px solid #d0d7de" >
-            <col span="1" style="width: 150px; border-right: 1px solid #d0d7de">
-            <col span="1" style="width: 50vmax; border-right: 1px solid #d0d7de">
-            <col span="1" style="width: 200px;">
-            <col span="1" style="width: 50px;">
-          </colgroup>
-        </tbody>
-      </table>
-    </div>
-    <!-- Add TO DO -->
-    <div id="add-assignment" class="modal">
-      <div class="modal-content">
-        <span id="close-assignment-modal" class="close">&times;</span>
-        <h2>Assignment</h2>
-        <form class="assignment-inputs" id="add-todo-form">
-          <input id="title" type="text" placeholder="title" required />
-          <br />
-          <select id="todo-subject"></select>
-          <br />
-          <div class = "container"><p>Due date</p>  
-            <input id="due-date" type="date" required />
-          </div>
-          <p>Description</p>
-          <textarea id="todo-description" rows="5" cols="10" placeholder=" Enter details here..."></textarea>
-          <br >
-          <button id="add-todo-button">done</button>
-        </form>
-      </div>
-    </div>
-    <div id="todo-modal" class="modal">
-      <div class="modal-content">
-        <span id="close-todo-modal" class="close">&times;</span>
-        <div id="todo-details"></div>
-      </div>
+<!-- TO DO List -->
+<div class="main">
+  <div id="todo-title">
+    <h1 id="todo-ref" style="margin-bottom: 5px;"><img src="assets/images/to-do-list.png"
+                                                       style="width: 29px; padding-right: 0.7rem" alt="todo">To do</h1>
+    <div id="todo-functional-box">
+      <label for="filter"></label><select id="filter">
+      <option value="-" selected disabled hidden>Filter</option>
+    </select>
+      <button class="add" id="add-assignment-button">&plus;</button>
     </div>
   </div>
-  <script type="module" src="script.js"></script>
+  <!-- NO TODO WARNING -->
+  <div class="inform" id="todo-inform">
+    <p>
+      Alright! You're already done every assignment.
+    </p>
+  </div>
+  <!-- TO DO Table -->
+  <div class="table">
+    <table id="todo">
+      <thead>
+      <th></th>
+      <th style="text-align: center">Due date</th>
+      <th>Title</th>
+      <th>Subject</th>
+      <th></th>
+      </thead>
+      <tbody id="todo-list">
+      <colgroup>
+        <col span="1" style="width: 50px; border-right: 1px solid #d0d7de">
+        <col span="1" style="width: 150px; border-right: 1px solid #d0d7de">
+        <col span="1" style="width: 50vmax; border-right: 1px solid #d0d7de">
+        <col span="1" style="width: 200px;">
+        <col span="1" style="width: 50px;">
+      </colgroup>
+      </tbody>
+    </table>
+  </div>
+  <!-- Add TO DO -->
+  <div id="add-assignment" class="modal">
+    <div class="modal-content">
+      <span id="close-assignment-modal" class="close">&times;</span>
+      <h2>Assignment</h2>
+      <form class="assignment-inputs" id="add-todo-form">
+        <label for="title"></label><input id="title" type="text" placeholder="title" required/>
+        <br/>
+        <label for="todo-subject"></label><select id="todo-subject"></select>
+        <br/>
+        <div class="container"><p>Due date</p>
+          <label for="due-date"></label><input id="due-date" type="date" required/>
+        </div>
+        <p>Description</p>
+        <label for="todo-description"></label><textarea id="todo-description" rows="5" cols="10"
+                                                        placeholder=" Enter details here..."></textarea>
+        <br>
+        <button id="add-todo-button">done</button>
+      </form>
+    </div>
+  </div>
+  <div id="todo-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-todo-modal" class="close">&times;</span>
+      <div id="todo-details"></div>
+    </div>
+  </div>
+</div>
+<script type="module" src="script.js"></script>
 </body>
 
 </html>

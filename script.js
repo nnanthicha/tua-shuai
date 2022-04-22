@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAEdbPO3YXkfcz29LiJPssZ7sLaxC8a57c",
@@ -30,40 +30,40 @@ const db = getFirestore();
 const subjectRef = collection(db, "subjects");
 const todoRef = collection(db, "todos");
 
-var currentUser;
-var subjectList = [];
-var currentFilter = "";
-var editScheduleModal = document.getElementById("edit-schedule");
-var loginWarningModal = document.getElementById("login-warning");
-var addAssignmentModal = document.getElementById("add-assignment");
-var todoDetailsModal = document.getElementById("todo-modal");
+let currentUser;
+let subjectList = [];
+let currentFilter = "";
+const editScheduleModal = document.getElementById("edit-schedule");
+const loginWarningModal = document.getElementById("login-warning");
+const addAssignmentModal = document.getElementById("add-assignment");
+const todoDetailsModal = document.getElementById("todo-modal");
 
 document.getElementById("username-form").addEventListener(
-  "submit",
-  async function (event) {
-    event.preventDefault();
-    let uid = document.getElementById("username").value;
-    if (uid) {
-      const user = await getDoc(doc(db, "users", uid));
-      if (!user.exists()) {
-        await setDoc(doc(db, "users", uid), { uid });
-        console.log("create user");
+    "submit",
+    async function (event) {
+      event.preventDefault();
+      let uid = document.getElementById("username").value;
+      if (uid) {
+        const user = await getDoc(doc(db, "users", uid));
+        if (!user) {
+          await setDoc(doc(db, "users", uid), {uid});
+          console.log("create user");
+        }
+        currentUser = uid;
+        console.log("login as " + currentUser);
+        alert("Login success");
+        redrawLoginForm(true);
+      } else {
+        currentUser = null;
+        subjectList = [];
+        alert("Login failed. Invalid ID or username");
       }
-      currentUser = uid;
-      console.log("login as " + currentUser);
-      alert("Login success");
-      redrawLoginForm(true);
-    } else {
-      currentUser = null;
-      subjectList = [];
-      alert("Login failed. Invalid ID or username");
-    }
-    redrawSubjectList();
-    drawSchedule();
-    drawTodo();
-    getSubjectList();
-  },
-  false
+      await redrawSubjectList();
+      await drawSchedule();
+      await drawTodo();
+      await getSubjectList();
+    },
+    false
 );
 
 function redrawLoginForm(isLogin) {
@@ -79,11 +79,12 @@ function redrawLoginForm(isLogin) {
 }
 
 window.logout = logout;
+
 function logout() {
   currentUser = null;
   subjectList = [];
-  drawSchedule();
-  drawTodo();
+  drawSchedule().then(null);
+  drawTodo().then(null);
   createSubjectOpt();
   redrawLoginForm(false);
   console.log("logout");
@@ -99,7 +100,7 @@ document.getElementById("edit-schedule-button").onclick = function () {
 
 document.getElementById("close-schedule-modal-button").onclick = function () {
   editScheduleModal.style.display = "none";
-  getSubjectList();
+  getSubjectList().then(null);
 };
 
 document.getElementById("add-assignment-button").onclick = function () {
@@ -119,48 +120,50 @@ document.getElementById("close-todo-modal").onclick = function () {
   todoDetailsModal.style.display = "none";
 }
 
-document.getElementById("close-warning-button").onclick = function() {
+document.getElementById("close-warning-button").onclick = function () {
   loginWarningModal.style.display = "none";
 }
 
-document.getElementById("filter").onclick = function() {
-  if(!currentUser) {
+document.getElementById("filter").onclick = function () {
+  if (!currentUser) {
     loginWarningModal.style.display = "block";
   }
 }
 
 window.onclick = function (event) {
-  if (event.target == editScheduleModal) {
+  if (event.target === editScheduleModal) {
     editScheduleModal.style.display = "none";
-    getSubjectList();
-  } else if (event.target == loginWarningModal) {
+    getSubjectList().then(() => {
+      console.log("success")
+    });
+  } else if (event.target === loginWarningModal) {
     loginWarningModal.style.display = "none";
-  } else if (event.target == addAssignmentModal) {
+  } else if (event.target === addAssignmentModal) {
     addAssignmentModal.style.display = "none";
-  } else if(event.target == todoDetailsModal) {
+  } else if (event.target === todoDetailsModal) {
     todoDetailsModal.style.display = "none";
   }
 };
 
 document
-  .getElementById("subject-form")
-  .addEventListener("submit", async function (event) {
-    event.preventDefault();
-    let uid = currentUser;
-    let subject = document.getElementById("subject").value;
-    let day = document.getElementById("day").value;
-    let startTime = document.getElementById("starting-time").value;
-    let endTime = document.getElementById("ending-time").value;
-    await addDoc(subjectRef, {
-      uid,
-      subject,
-      day,
-      startTime,
-      endTime,
+    .getElementById("subject-form")
+    .addEventListener("submit", async function (event) {
+      event.preventDefault();
+      let uid = currentUser;
+      let subject = document.getElementById("subject").value;
+      let day = document.getElementById("day").value;
+      let startTime = document.getElementById("starting-time").value;
+      let endTime = document.getElementById("ending-time").value;
+      await addDoc(subjectRef, {
+        uid,
+        subject,
+        day,
+        startTime,
+        endTime,
+      });
+      redrawSubjectList().then(null);
+      drawSchedule().then(null);
     });
-    redrawSubjectList();
-    drawSchedule();
-  });
 
 async function redrawSubjectList() {
   const subjectList = document.getElementById("subject-list");
@@ -169,12 +172,12 @@ async function redrawSubjectList() {
   q.forEach((sub) => {
     subjectList.innerHTML += `
     <tr id="${sub.id}">
-      <td>${sub.data().subject}</td>
-      <td>${sub.data().day}</td>
+      <td style="border-right: 1px solid #d0d7de">${sub.data().subject}</td>
+      <td style="border-right: 1px solid #d0d7de">${sub.data().day}</td>
       <td>${sub.data().startTime} - ${sub.data().endTime}</td>
       <td><button class="remove" id="remove-subject" onclick="deleteSubject('${
         sub.id
-      }')"><img src="assets/images/trash.png" style="width: 20px; height: 20px;"></button></td>
+    }')"><img src="assets/images/trash.png" style="width: 20px; height: 20px;" alt="trash"></button></td>
     </tr>`;
   });
   document.getElementById("subject").value = "";
@@ -186,8 +189,8 @@ async function redrawSubjectList() {
 window.deleteSubject = async (subId) => {
   const docRef = doc(db, "subjects/" + subId);
   await deleteDoc(docRef);
-  redrawSubjectList();
-  drawSchedule();
+  await redrawSubjectList();
+  await drawSchedule();
 };
 
 async function drawSchedule() {
@@ -206,25 +209,24 @@ async function drawSchedule() {
     document.getElementsByClassName("table")[0].style.overflowX = "hidden";
   }
   const todaySubList = document.getElementById("today-subject");
-  drawDaySchedule(today, todaySubList);
+  await drawDaySchedule(today, todaySubList);
   const tmrSubList = document.getElementById("tomorrow-subject");
-  drawDaySchedule(tomorrow, tmrSubList);
+  await drawDaySchedule(tomorrow, tmrSubList);
 }
 
 async function drawDaySchedule(day, subList) {
   const subs = await getDocs(
-    query(
-      subjectRef,
-      where("uid", "==", currentUser),
-      where("day", "==", day),
-      orderBy("startTime")
-    )
+      query(
+          subjectRef,
+          where("uid", "==", currentUser),
+          where("day", "==", day),
+          orderBy("startTime")
+      )
   );
   subList.innerHTML = "";
-  if(subs.empty) {
+  if (subs.empty) {
     subList.innerHTML = `<p style="color: gray; text-align: center;"> - - - - Relax!!! - - - -</p>`;
-  }
-  else {
+  } else {
     subs.forEach((sub) => {
       subList.innerHTML += `
       <p style="margin-bottom:5px; float: left;">${sub.data().startTime} - ${sub.data().endTime}&nbsp;&nbsp;</p>
@@ -236,32 +238,31 @@ async function drawDaySchedule(day, subList) {
 }
 
 document.getElementById("add-todo-form").addEventListener("submit", async function (event) {
-    event.preventDefault();
-    let uid = currentUser;
-    let title = document.getElementById("title").value;
-    let subject = document.getElementById("todo-subject").value;
-    let due = document.getElementById("due-date").value;
-    let description = document.getElementById("todo-description").value;
-    let done = false;
-    await addDoc(todoRef, {
-      uid,
-      title,
-      subject,
-      due,
-      description,
-      done,
-    });
-    addAssignmentModal.style.display = "none";
-    document.getElementById("filter").value = currentFilter;
-    filterTodo();
+  event.preventDefault();
+  let uid = currentUser;
+  let title = document.getElementById("title").value;
+  let subject = document.getElementById("todo-subject").value;
+  let due = document.getElementById("due-date").value;
+  let description = document.getElementById("todo-description").value;
+  let done = false;
+  await addDoc(todoRef, {
+    uid,
+    title,
+    subject,
+    due,
+    description,
+    done,
+  });
+  addAssignmentModal.style.display = "none";
+  document.getElementById("filter").value = currentFilter;
+  filterTodo();
 });
 
 async function drawTodo(field, filter) {
   let q;
-  if(field) {
+  if (field) {
     q = await getDocs(query(todoRef, where("uid", "==", currentUser), where(field, "==", filter), orderBy("due")));
-  }
-  else {
+  } else {
     q = await getDocs(query(todoRef, where("uid", "==", currentUser), orderBy("due")));
   }
   if (!q.empty) {
@@ -284,7 +285,7 @@ async function drawTodo(field, filter) {
       <td>${task.data().subject}</td>
       <td id="remove-button-${task.id}" style="text-align: right"></td>
     </tr>`;
-    if(task.data().done) {
+    if (task.data().done) {
       changeStyleToDone(task.id);
     }
   });
@@ -297,12 +298,11 @@ async function drawTodo(field, filter) {
 window.seeDetail = async (taskId) => {
   let modal = document.getElementById("todo-details");
   const task = await getDoc(doc(db, "todos", taskId));
-  if(!task.data().description) {
+  if (!task.data().description) {
     modal.innerHTML = `
     <h2 style="margin-bottom: 5px">Details</h2>
     <p>-</p>`;
-  }
-  else {
+  } else {
     modal.innerHTML = `
     <h2 style="margin-bottom: 5px">Details</h2>
     <p>${task.data().description}</p>`;
@@ -312,7 +312,7 @@ window.seeDetail = async (taskId) => {
 
 window.markDone = async (taskId) => {
   changeStyleToDone(taskId);
-  await updateDoc(doc(db, `todos/${taskId}`), { done: true });
+  await updateDoc(doc(db, `todos/${taskId}`), {done: true});
   filterTodo();
 };
 
@@ -322,7 +322,7 @@ function changeStyleToDone(taskId) {
   task.style.color = "rgb(189, 186, 186)";
   document.getElementById("remove-button-" + taskId).innerHTML += `
   <button class="remove" id="remove-subject" onclick="deleteTask('${taskId}')">
-    <img src="assets/images/trash.png" style="width: 20px; height: 20px;">
+    <img src="assets/images/trash.png" style="width: 20px; height: 20px;" alt="trash">
   </button>`;
   const button = document.getElementById("button-" + taskId);
   button.innerHTML = "&check;";
@@ -331,7 +331,7 @@ function changeStyleToDone(taskId) {
 }
 
 window.undone = async (taskId) => {
-  await updateDoc(doc(db, `todos/${taskId}`), { done: false });
+  await updateDoc(doc(db, `todos/${taskId}`), {done: false});
   filterTodo();
 }
 
@@ -345,7 +345,7 @@ async function getSubjectList() {
   subjectList = [];
   const q = await getDocs(query(subjectRef, where("uid", "==", currentUser)));
   q.forEach((sub) => {
-    if(!subjectList.some(s => s.toLowerCase() == sub.data().subject.toLowerCase())) {
+    if (!subjectList.some(s => s.toLowerCase() === sub.data().subject.toLowerCase())) {
       subjectList.push(sub.data().subject);
     }
   });
@@ -357,15 +357,15 @@ function createSubjectOpt() {
   opt.innerHTML = `<option value="-" selected disabled hidden>subject</option>`;
   let filter = document.getElementById("filter");
   filter.innerHTML = `<option value="" selected disabled hidden>Filter</option>`;
-  if(subjectList.length != 0) {
+  if (subjectList.length !== 0) {
     filter.innerHTML += `<option value="">All</option>`;
   }
-  subjectList.forEach(function(sub) {
+  subjectList.forEach(function (sub) {
     let s = sub.charAt(0).toUpperCase() + sub.slice(1);
     opt.innerHTML += `<option value="${s}">${s}</option>`
     filter.innerHTML += `<option value="${s}">${s}</option>`;
   });
-  if(subjectList.length != 0) {
+  if (subjectList.length !== 0) {
     opt.innerHTML += `<option value="-">Other</option>`;
     filter.innerHTML += `
     <option value="done">- - DONE - -</option>
@@ -375,19 +375,17 @@ function createSubjectOpt() {
 }
 
 document.getElementById("filter").onchange = filterTodo;
+
 function filterTodo() {
   let f = document.getElementById("filter").value;
   currentFilter = f;
-  if(f == "All" || f == "") {
-    drawTodo();
-  }
-  else if(f == "done") {
-    drawTodo("done", true);
-  }
-  else if(f == "undone") {
-    drawTodo("done", false);
-  }
-  else {
-    drawTodo("subject", f);
+  if (f === "All" || f === "") {
+    drawTodo().then(null);
+  } else if (f === "done") {
+    drawTodo("done", true).then(null);
+  } else if (f === "undone") {
+    drawTodo("done", false).then(null);
+  } else {
+    drawTodo("subject", f).then(null);
   }
 }
