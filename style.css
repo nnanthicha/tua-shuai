@@ -180,7 +180,7 @@ nav {
 }
 #schedule {
   visibility: hidden;
-  width: 80vmax;
+  width: 80%;
   table-layout: fixed;
   margin-top: 2rem;
   margin-left: auto;
@@ -357,7 +357,7 @@ nav {
   margin-left: auto;
   margin-right: auto;
   visibility: hidden;
-  width: 80vmax;
+  width: 80%;
   table-layout: fixed;
   /*margin: 10px 0px 10px 20px;*/
   border-collapse: collapse;
