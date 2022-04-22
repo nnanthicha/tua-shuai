@@ -347,13 +347,10 @@ nav {
   text-align: center;
   padding-top: 100px;
 }
-.todo-column {
-  float: left;
-  width: 21%;
-  padding-bottom: 10px;
+.table {
+  overflow-x: hidden;
 }
 #todo {
-  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
   /*border: 1px solid;*/
   margin-top: 1.5rem;
   margin-left: auto;
@@ -361,7 +358,6 @@ nav {
   visibility: hidden;
   width: 80vmax;
   table-layout: fixed;
-  /*margin: 10px 0px 10px 20px;*/
   border-collapse: collapse;
   border-bottom: 2px #d0d7de solid;
 }
