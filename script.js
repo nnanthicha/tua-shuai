@@ -206,6 +206,7 @@ async function drawSchedule() {
     document.getElementsByClassName("table")[0].style.overflowX = "auto";
   } else {
     document.getElementById("schedule-inform").style.display = "block";
+    document.getElementsByClassName("table")[0].style.visibility = "hidden";
     document.getElementById("schedule").style.visibility = "hidden";
     document.getElementsByClassName("table")[0].style.overflowX = "hidden";
   }
@@ -273,6 +274,7 @@ async function drawTodo(field, filter) {
     document.getElementsByClassName("table")[1].style.overflowX = "auto";
   } else {
     document.getElementById("todo-inform").style.display = "block";
+    document.getElementsByClassName("table")[1].style.visibility = "hidden";
     document.getElementById("todo").style.visibility = "hidden";
     document.getElementsByClassName("table")[1].style.overflowX = "hidden";
   }
