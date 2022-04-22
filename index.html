@@ -59,22 +59,24 @@
       <span class="close" id="close-schedule-modal-button">&times;</span>
       <h2>Subjects</h2>
       <form id="subject-form">
-        <label for="subject"></label><input type="text" id="subject" class="subject-form-input" placeholder="subject"
+        <label for="subject"></label><input type="text" id="subject" class="subject-form-input" placeholder="Subject"
                                             required/>
         <label for="day"></label><select id="day" class="subject-form-input" required>
-        <option value="" selected disabled hidden>day</option>
+        <option value="" selected disabled hidden>Day</option>
+        <option value="SUN">SUN</option>
         <option value="MON">MON</option>
         <option value="TUE">TUE</option>
         <option value="WED">WED</option>
         <option value="THU">THU</option>
         <option value="FRI">FRI</option>
+        <option value="SAT">SAT</option>
       </select>
         <div class="subject-form-input">
-          start
+          Start
           <label for="starting-time"></label><input type="time" id="starting-time" required/>
         </div>
         <div class="subject-form-input">
-          end
+          End
           <label for="ending-time"></label><input type="time" id="ending-time" required/>
         </div>
         <button class="add" id="add-subject">&plus;</button>
@@ -177,7 +179,7 @@
       <span id="close-assignment-modal" class="close">&times;</span>
       <h2>Assignment</h2>
       <form class="assignment-inputs" id="add-todo-form">
-        <label for="title"></label><input id="title" type="text" placeholder="title" required/>
+        <label for="title"></label><input id="title" type="text" placeholder="Title" required/>
         <br/>
         <label for="todo-subject"></label><select id="todo-subject"></select>
         <br/>

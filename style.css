@@ -372,9 +372,11 @@ nav {
   border-bottom: 2px solid #d0d7de;
   border-top: 2px solid #d0d7de;
 }
+
 #subject-list td {
- border-bottom: 1px solid #d0d7de;
+  border-bottom: 1px solid #d0d7de;
 }
+
 #subject-list tr td {
   padding: 10px;
 }
