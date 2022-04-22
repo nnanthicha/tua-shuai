@@ -201,6 +201,7 @@ async function drawSchedule() {
   const q = await getDocs(query(subjectRef, where("uid", "==", currentUser)));
   if (!q.empty) {
     document.getElementById("schedule-inform").style.display = "none";
+    document.getElementsByClassName("table")[0].style.visibility = "visible";
     document.getElementById("schedule").style.visibility = "visible";
     document.getElementsByClassName("table")[0].style.overflowX = "auto";
   } else {
@@ -267,6 +268,7 @@ async function drawTodo(field, filter) {
   }
   if (!q.empty) {
     document.getElementById("todo-inform").style.display = "none";
+    document.getElementsByClassName("table")[1].style.visibility = "visible";
     document.getElementById("todo").style.visibility = "visible";
     document.getElementsByClassName("table")[1].style.overflowX = "auto";
   } else {
