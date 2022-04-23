@@ -101,7 +101,8 @@ nav {
 }
 
 .web-name {
-  font-size: 130%;
+  padding-top: 5px;
+  font-size: 150%;
   color: white;
   font-family: "Fredoka One", cursive;
   margin-left: 0.7rem;
@@ -109,7 +110,8 @@ nav {
 }
 
 .logo {
-  height: 25px;
+  padding-left: 0.5rem;
+  height: 30px;
 }
 
 .login {
