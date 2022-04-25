@@ -203,12 +203,10 @@ async function drawSchedule() {
     document.getElementById("schedule-inform").style.display = "none";
     document.getElementsByClassName("table")[0].style.visibility = "visible";
     document.getElementById("schedule").style.visibility = "visible";
-    document.getElementsByClassName("table")[0].style.overflowX = "auto";
   } else {
     document.getElementById("schedule-inform").style.display = "block";
     document.getElementsByClassName("table")[0].style.visibility = "hidden";
     document.getElementById("schedule").style.visibility = "hidden";
-    document.getElementsByClassName("table")[0].style.overflowX = "hidden";
   }
   const todaySubList = document.getElementById("today-subject");
   await drawDaySchedule(today, todaySubList);
@@ -271,12 +269,10 @@ async function drawTodo(field, filter) {
     document.getElementById("todo-inform").style.display = "none";
     document.getElementsByClassName("table")[1].style.visibility = "visible";
     document.getElementById("todo").style.visibility = "visible";
-    document.getElementsByClassName("table")[1].style.overflowX = "auto";
   } else {
     document.getElementById("todo-inform").style.display = "block";
     document.getElementsByClassName("table")[1].style.visibility = "hidden";
     document.getElementById("todo").style.visibility = "hidden";
-    document.getElementsByClassName("table")[1].style.overflowX = "hidden";
   }
   const todoList = document.getElementById("todo-list");
   todoList.innerHTML = "";
