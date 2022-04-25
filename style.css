@@ -168,7 +168,8 @@ nav {
   display: none;
 }
 
-.logout-button {
+.logout-button,
+.nav-button {
   transition: 0.2s all;
   border: none;
   font-family: "Fredoka One", cursive;
@@ -183,6 +184,12 @@ nav {
 .logout-button:focus {
   cursor: pointer;
   color: rgb(231, 90, 90);
+}
+
+.nav-button:hover,
+.nav-button:focus {
+  cursor: pointer;
+  color: rgb(252, 206, 4);
 }
 
 .main {
