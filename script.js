@@ -305,7 +305,7 @@ window.seeDetail = async (taskId) => {
   } else {
     modal.innerHTML = `
     <h2 style="margin-bottom: 5px">Details</h2>
-    <p>${task.data().description}</p>`;
+    <p style="white-space: pre-line">${task.data().description}</p>`;
   }
   document.getElementById("todo-modal").style.display = "block";
 }
