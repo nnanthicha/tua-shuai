@@ -354,14 +354,14 @@ async function getSubjectList() {
 
 function createSubjectOpt() {
   let opt = document.getElementById("todo-subject");
-  opt.innerHTML = `<option value="-" selected disabled hidden>subject</option>`;
+  opt.innerHTML = `<option value="-" selected disabled hidden>Subject</option>`;
   let filter = document.getElementById("filter");
   filter.innerHTML = `<option value="" selected disabled hidden>Filter</option>`;
   if (subjectList.length !== 0) {
     filter.innerHTML += `<option value="">All</option>`;
   }
   subjectList.forEach(function (sub) {
-    let s = sub.charAt(0).toUpperCase() + sub.slice(1);
+    let s = sub.charAt(0).toUpperCase() + sub.slice(1).toLowerCase();
     opt.innerHTML += `<option value="${s}">${s}</option>`
     filter.innerHTML += `<option value="${s}">${s}</option>`;
   });
