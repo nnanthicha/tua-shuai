@@ -390,6 +390,6 @@ function filterTodo() {
   } else if (f === "undone") {
     drawTodo("done", false).then(null);
   } else {
-    drawTodo("Subject", f).then(null);
+    drawTodo("subject", f).then(null);
   }
 }
