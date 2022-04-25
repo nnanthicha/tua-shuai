@@ -298,14 +298,15 @@ async function drawTodo(field, filter) {
 window.seeDetail = async (taskId) => {
   let modal = document.getElementById("todo-details");
   const task = await getDoc(doc(db, "todos", taskId));
+  modal.innerHTML = `
+    <h1 style="padding-bottom: 0.6rem; margin-top: 1rem; text-align: center; font-weight: lighter">
+    <img src="assets/images/documents.png" style="width: 30px; vertical-align: -5px;" alt="detail">
+    Details</h1>`
   if (!task.data().description) {
-    modal.innerHTML = `
-    <h2 style="margin-bottom: 5px">Details</h2>
-    <p>-</p>`;
+    modal.innerHTML += `<p class="detail">-</p>`;
   } else {
-    modal.innerHTML = `
-    <h2 style="margin-bottom: 5px">Details</h2>
-    <p style="white-space: pre-line">${task.data().description}</p>`;
+    modal.innerHTML += `
+    <p class="detail" style="white-space: pre-line">${task.data().description}</p>`;
   }
   document.getElementById("todo-modal").style.display = "block";
 }
@@ -367,10 +368,12 @@ function createSubjectOpt() {
   });
   if (subjectList.length !== 0) {
     opt.innerHTML += `<option value="-">Other</option>`;
+    filter.innerHTML += `<option value="-">Other</option>`;
+  }
+  if (currentUser) {
     filter.innerHTML += `
     <option value="done">- - DONE - -</option>
-    <option value="undone">- - UNDONE - -</option>
-    <option value="-">Other</option>`;
+    <option value="undone">- - UNDONE - -</option>`;
   }
 }
 

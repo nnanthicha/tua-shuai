@@ -12,20 +12,22 @@
 
 <body>
 <!-- TOP NAVIGATION BAR -->
-<nav>
+<nav id="top">
   <div class="web-name-container">
     <img class="logo" alt="logo" src="assets/images/logo.svg"/>
     <p class="web-name">TUA SHUAI</p>
     <a href="#schedule-ref" style="text-decoration: none">
       <div class="nav-button">
         <img src="assets/images/calendar.png" style="cursor: pointer; width: 2rem; padding-left: 2rem" alt="schedule">
-        <p style="display: inline-block; vertical-align: 8px; margin-left: 7px; font-size: 105%;">Schedule</p>
+        <p style="display: inline-block; vertical-align: 8px; margin-left: 7px; font-size: 110%; font-weight: lighter">
+          Schedule</p>
       </div>
     </a>
     <a href="#todo-ref" style="text-decoration: none">
       <div class="nav-button">
         <img src="assets/images/to-do-list.png" style="cursor: pointer; width: 2rem; padding-left: 1rem" alt="todo">
-        <p style="display: inline-block; vertical-align: 8px; margin-left: 7px; font-size: 105%">To do</p>
+        <p style="display: inline-block; vertical-align: 8px; margin-left: 7px; font-size: 110%; font-weight: lighter">
+          To do</p>
       </div>
     </a>
   </div>
@@ -63,54 +65,65 @@
   <div id="edit-schedule" class="modal">
     <div class="modal-content">
       <span class="close" id="close-schedule-modal-button">&times;</span>
-      <h2>Subjects</h2>
-      <form id="subject-form">
-        <label for="subject"></label><input type="text" id="subject" class="subject-form-input" placeholder="Subject"
-                                            required/>
-        <label for="day"></label><select id="day" class="subject-form-input" required>
-        <option value="" selected disabled hidden>Day</option>
-        <option value="SUN">SUN</option>
-        <option value="MON">MON</option>
-        <option value="TUE">TUE</option>
-        <option value="WED">WED</option>
-        <option value="THU">THU</option>
-        <option value="FRI">FRI</option>
-        <option value="SAT">SAT</option>
-      </select>
-        <div class="subject-form-input">
-          Start
-          <label for="starting-time"></label><input type="time" id="starting-time" required/>
-        </div>
-        <div class="subject-form-input">
-          End
-          <label for="ending-time"></label><input type="time" id="ending-time" required/>
-        </div>
-        <button class="add" id="add-subject">&plus;</button>
-      </form>
-      <table id="user-subjects" style="border-collapse: collapse">
-        <colgroup>
-          <col span="1" style="width: 40%">
-          <col span="1" style="width: 15%">
-          <col span="1" style="width: 40%">
-          <col span="1" style="width: 5%;">
-        </colgroup>
-        <tbody id="subject-list"></tbody>
-      </table>
+      <h1 style="font-weight: lighter; text-align: center; margin-top: 0.6rem; padding-bottom: 1rem">
+        <img src="assets/images/bookshelf.png" style="width: 40px; vertical-align: -5px" alt="subject">
+        Subjects</h1>
+      <div style="margin-left: auto; width: 70%;margin-right: auto; margin-bottom: 1rem">
+        <form id="subject-form">
+          <label for="subject"></label><input type="text" id="subject" class="subject-form-input" placeholder="Subject"
+                                              required/>
+          <label for="day"></label><select id="day" class="subject-form-input" required>
+          <option value="" selected disabled hidden>Day</option>
+          <option value="SUN">SUN</option>
+          <option value="MON">MON</option>
+          <option value="TUE">TUE</option>
+          <option value="WED">WED</option>
+          <option value="THU">THU</option>
+          <option value="FRI">FRI</option>
+          <option value="SAT">SAT</option>
+        </select>
+          <div class="subject-form-input">
+            Start
+            <label for="starting-time"></label><input type="time" id="starting-time" required/>
+          </div>
+          <div class="subject-form-input">
+            End
+            <label for="ending-time"></label><input type="time" id="ending-time" required/>
+          </div>
+          <button class="add" id="add-subject">&plus;</button>
+        </form>
+      </div>
+      <div>
+        <table id="user-subjects" style="border-collapse: collapse; width: 80%; margin: 4rem auto 1rem;">
+          <colgroup>
+            <col span="1" style="width: 40%">
+            <col span="1" style="width: 15%">
+            <col span="1" style="width: 40%">
+            <col span="1" style="width: 5%;">
+          </colgroup>
+          <tbody id="subject-list"></tbody>
+        </table>
+      </div>
     </div>
   </div>
   <!-- LOGIN WARNING POPUP -->
   <div id="login-warning" class="modal">
     <div class="modal-content">
       <span class="close" id="close-warning-button">&times;</span>
-      <p>
-        It seems you are not login.<br/>Please enter ID or username to
-        enjoy Tua Shuai.
+      <h1 style="padding: 0.5rem 0 1rem 0; text-align: center">
+        <img src="assets/images/alert.png" style="width: 40px; vertical-align: -7px" alt="alert">
+        Alert
+        <img src="assets/images/alert.png" style="width: 40px; vertical-align: -7px" alt="alert">
+      </h1>
+      <p style="font-size: 150%; text-align: center; padding-bottom: 1.5rem; font-weight: lighter">
+        It seems you are not login.<br/>Please enter <b style="color: rgb(231, 90, 90) ">ID or username</b> to
+        start organize your life.
       </p>
     </div>
   </div>
   <!-- NO SUBJECT WARNING  -->
   <div class="inform" id="schedule-inform">
-    <p style="font-size: 120%">
+    <p style="font-size: 120%;">
       Oops! seems there is no subject in schedule <br/>Please add a subject
       to see schedule
     </p>
@@ -183,16 +196,17 @@
   <div id="add-assignment" class="modal">
     <div class="modal-content">
       <span id="close-assignment-modal" class="close">&times;</span>
-      <h2>Assignment</h2>
+      <h1 style="text-align: center; font-weight: lighter;margin-top: 0.6rem">
+        <img src="assets/images/checklist.png" alt="checklist" style="width: 45px; vertical-align: -6px">
+        To Do</h1>
       <form class="assignment-inputs" id="add-todo-form">
-        <label for="title"></label><input id="title" type="text" placeholder="Title" required/>
-        <br/>
+        <label for="title"></label><input id="title" type="text" placeholder="Title"
+                                          required
+                                          style="width: 100% ;height: 30px; text-align: center; font-size: 110%"/>
+        <h3 style="font-weight: lighter; margin-bottom: 7px">Due date</h3>
+        <label for="due-date"></label><input id="due-date" type="date" required/>
         <label for="todo-subject"></label><select id="todo-subject"></select>
-        <br/>
-        <div class="container"><p>Due date</p>
-          <label for="due-date"></label><input id="due-date" type="date" required/>
-        </div>
-        <p>Description</p>
+        <h3 style="font-weight: lighter; margin-bottom: 7px">Description</h3>
         <label for="todo-description"></label><textarea id="todo-description" rows="5" cols="10"
                                                         placeholder=" Enter details here..."></textarea>
         <br>
@@ -209,5 +223,12 @@
 </div>
 <script type="module" src="script.js"></script>
 </body>
-
+<footer style="background: #2b3137; padding: 1rem; margin-top:8rem">
+  <a href="#top">
+    <img src="assets/images/arrow_upward_white.svg"
+         style="width: 50px; float: left; margin-bottom:1rem;margin-left: 1rem"></a>
+  <p style="color: #f9bbd2; font-weight: lighter; text-align: right;padding: 1rem"><span
+          style="color: white; display: inline">COMP ENG ESS Final Project</span>
+    @Chulalongkorn University</p>
+</footer>
 </html>
