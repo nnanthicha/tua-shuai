@@ -203,12 +203,10 @@ async function drawSchedule() {
     document.getElementById("schedule-inform").style.display = "none";
     document.getElementsByClassName("table")[0].style.visibility = "visible";
     document.getElementById("schedule").style.visibility = "visible";
-    document.getElementsByClassName("table")[0].style.overflowX = "auto";
   } else {
     document.getElementById("schedule-inform").style.display = "block";
     document.getElementsByClassName("table")[0].style.visibility = "hidden";
     document.getElementById("schedule").style.visibility = "hidden";
-    document.getElementsByClassName("table")[0].style.overflowX = "hidden";
   }
   const todaySubList = document.getElementById("today-subject");
   await drawDaySchedule(today, todaySubList);
@@ -271,12 +269,10 @@ async function drawTodo(field, filter) {
     document.getElementById("todo-inform").style.display = "none";
     document.getElementsByClassName("table")[1].style.visibility = "visible";
     document.getElementById("todo").style.visibility = "visible";
-    document.getElementsByClassName("table")[1].style.overflowX = "auto";
   } else {
     document.getElementById("todo-inform").style.display = "block";
     document.getElementsByClassName("table")[1].style.visibility = "hidden";
     document.getElementById("todo").style.visibility = "hidden";
-    document.getElementsByClassName("table")[1].style.overflowX = "hidden";
   }
   const todoList = document.getElementById("todo-list");
   todoList.innerHTML = "";
@@ -309,7 +305,7 @@ window.seeDetail = async (taskId) => {
   } else {
     modal.innerHTML = `
     <h2 style="margin-bottom: 5px">Details</h2>
-    <p>${task.data().description}</p>`;
+    <p style="white-space: pre-line">${task.data().description}</p>`;
   }
   document.getElementById("todo-modal").style.display = "block";
 }
@@ -358,14 +354,14 @@ async function getSubjectList() {
 
 function createSubjectOpt() {
   let opt = document.getElementById("todo-subject");
-  opt.innerHTML = `<option value="-" selected disabled hidden>subject</option>`;
+  opt.innerHTML = `<option value="-" selected disabled hidden>Subject</option>`;
   let filter = document.getElementById("filter");
   filter.innerHTML = `<option value="" selected disabled hidden>Filter</option>`;
   if (subjectList.length !== 0) {
     filter.innerHTML += `<option value="">All</option>`;
   }
   subjectList.forEach(function (sub) {
-    let s = sub.charAt(0).toUpperCase() + sub.slice(1);
+    let s = sub.charAt(0).toUpperCase() + sub.slice(1).toLowerCase();
     opt.innerHTML += `<option value="${s}">${s}</option>`
     filter.innerHTML += `<option value="${s}">${s}</option>`;
   });
@@ -390,6 +386,6 @@ function filterTodo() {
   } else if (f === "undone") {
     drawTodo("done", false).then(null);
   } else {
-    drawTodo("Subject", f).then(null);
+    drawTodo("subject", f).then(null);
   }
 }
