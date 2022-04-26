@@ -379,8 +379,8 @@ function createSubjectOpt() {
     filter.innerHTML += `
     <option value="done">- - DONE - -</option>
     <option value="undone">- - UNDONE - -</option>`;
+    document.getElementById("filter").value = currentFilter;
   }
-  document.getElementById("filter").value = currentFilter;
 }
 
 document.getElementById("filter").onchange = filterTodo;
