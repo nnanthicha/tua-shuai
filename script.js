@@ -109,7 +109,6 @@ document.getElementById("close-schedule-modal-button").onclick = function () {
 document.getElementById("add-assignment-button").onclick = function () {
   if (currentUser) {
     addAssignmentModal.style.display = "block";
-    createSubjectOpt();
   } else {
     loginWarningModal.style.display = "block";
   }
@@ -261,7 +260,6 @@ document.getElementById("add-todo-form").addEventListener("submit", async functi
     done,
   });
   addAssignmentModal.style.display = "none";
-  document.getElementById("filter").value = currentFilter;
   filterTodo();
 });
 
@@ -382,6 +380,7 @@ function createSubjectOpt() {
     <option value="done">- - DONE - -</option>
     <option value="undone">- - UNDONE - -</option>`;
   }
+  document.getElementById("filter").value = currentFilter;
 }
 
 document.getElementById("filter").onchange = filterTodo;
