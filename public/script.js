@@ -46,7 +46,7 @@ document.getElementById("username-form").addEventListener(
       let uid = document.getElementById("username").value;
       if (uid) {
         const user = await getDoc(doc(db, "users", uid));
-        if (!user) {
+        if (!user.exists()) {
           await setDoc(doc(db, "users", uid), {uid});
           console.log("create user");
         }
