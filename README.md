@@ -23,5 +23,5 @@ Use HTML, CSS, JS
 
 ## Sceenshots
 
-![alt_text](./screenshots/screenshot1.PNG)
-![alt_text](./screenshots/screenshot2.PNG)
+![alt_text](./screenshots/screenshot1.png)
+![alt_text](./screenshots/screenshot2.png)
