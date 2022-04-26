@@ -20,3 +20,8 @@ Use HTML, CSS, JS
 - Navigation
 - Login
 - Cool UX/UI design
+
+## Sceenshots
+
+![alt_text](./screenshots/screenshot1.PNG)
+![alt_text](./screenshots/screenshot2.PNG)
