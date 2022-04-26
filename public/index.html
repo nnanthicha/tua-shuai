@@ -49,9 +49,9 @@
       "One of the secrets of getting more done <br/>is to make a TO-DO List
       every day, <br/>keep it visible"
     </h1>
-    <h3 id="quote-author">Alan Lakein</h3>
+    <h3 class="quote-author">Alan Lakein</h3>
   </div>
-  <img src="assets/images/schedule.png" id="schedule-png" alt="schedule"/>
+  <img src="assets/images/schedule.png" class="schedule-png" alt="schedule"/>
 </div>
 <!-- SCHEDULE -->
 <div class="main">
@@ -68,7 +68,7 @@
       <h1 style="font-weight: lighter; text-align: center; margin-top: 0.6rem; padding-bottom: 1rem">
         <img src="assets/images/bookshelf.png" style="width: 40px; vertical-align: -5px" alt="subject">
         Subjects</h1>
-      <div style="margin-left: auto; width: 70%;margin-right: auto; margin-bottom: 1rem">
+      <div style="width: 100%; display:flex; justify-content: center;">
         <form id="subject-form">
           <label for="subject"></label><input type="text" id="subject" class="subject-form-input" placeholder="Subject"
                                               required/>
@@ -94,7 +94,7 @@
         </form>
       </div>
       <div>
-        <table id="user-subjects" style="border-collapse: collapse; width: 80%; margin: 4rem auto 1rem;">
+        <table id="user-subjects" style="border-collapse: collapse; width: 80%; margin: 1rem auto 1rem;">
           <colgroup>
             <col span="1" style="width: 40%">
             <col span="1" style="width: 15%">
@@ -132,17 +132,17 @@
   <div class="table" id="schedule-style">
     <table id="schedule">
       <thead>
-      <th>
+      <th style="border-top-left-radius: 10px">
         <img src="assets/images/today.png" style="width: 30px; margin-right: 8px; vertical-align: -5px" alt="today">Today
       </th>
-      <th>
+      <th style="border-top-right-radius: 10px">
         <img src="assets/images/tomorrow.png" style="width: 30px; margin-right: 10px; vertical-align: -4px"
              alt="tomorrow">Upcoming
         Tomorrow
       </th>
       </thead>
       <tbody style="font-size: 110%">
-      <td>
+      <td style="border-right: 1px solid #d0d7de">
         <ul id="today-subject"></ul>
       </td>
       <td>
@@ -159,7 +159,7 @@
     <h1 id="todo-ref" style="margin-bottom: 5px;"><img src="assets/images/to-do-list.png"
                                                        style="width: 29px; padding-right: 0.7rem" alt="todo">To do</h1>
     <div id="todo-functional-box">
-      <label for="filter"></label><select id="filter">
+      <label for="filter"></label><select id="filter" style="border: 2px solid #d0d7de;color:#2b3137">
       <option value="-" selected disabled hidden>Filter</option>
     </select>
       <button class="add" id="add-assignment-button">&plus;</button>
@@ -220,14 +220,39 @@
       <div id="todo-details"></div>
     </div>
   </div>
+  <div id="about-us" class="modal">
+    <span id="close-about-us-modal" class="close">&times;</span>
+    <div class="modal-content">
+      <h2 style="text-align: center;padding-top: 1rem">ABOUT US</h2>
+      <div class="aboutus">
+        <div class="quote" style="border: none;padding-top: 1vw">
+          <h1 class="quote-text">
+            ...TUA SHAUI keeps your student life organized...
+          </h1>
+          <h3 style="font-style: normal">Track, Manage Todo, and reach your productivity peak.</h3>
+          <h4 class="quote-author" style="padding-left: 1rem; color: gray; line-height: 1.25em; padding-top: 2vw">
+            <b>Developer Team:</b><br/>
+            Thanaphum Thepwan<br/>
+            Nanthicha Makjinda<br/>
+            Ponrawoot Khamkhanongngam<br/>
+            Thanachat Aimgosa</h4>
+        </div>
+        <img src="assets/images/help.png" class="schedule-png" alt="help" style="margin-right: 2rem"/>
+      </div>
+    </div>
+  </div>
 </div>
 <script type="module" src="script.js"></script>
 </body>
 <footer style="background: #2b3137; padding: 1rem; margin-top:8rem">
   <a href="#top">
     <img src="assets/images/arrow_upward_white.svg"
-         style="width: 50px; float: left; margin-bottom:1rem;margin-left: 1rem"></a>
-  <p style="color: #f9bbd2; font-weight: lighter; text-align: right;padding: 1rem"><span
+         style="width: 50px; float: left;margin-top: 1rem;margin-left: 1rem">
+  </a>
+  <button id="about-us-button" class="nav-button" style="padding-right: 1rem;font-size: 110%; float: right">ABOUT US
+  </button>
+  <br/>
+  <p style="color: #f9bbd2; font-weight: lighter; text-align:right; padding: 1.5rem 1rem 1rem;"><span
           style="color: white; display: inline">COMP ENG ESS Final Project</span>
     @Chulalongkorn University</p>
 </footer>
