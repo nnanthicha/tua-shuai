@@ -11,6 +11,10 @@
   src: url(assets/fonts/Chocolateteehaypai.ttf);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -36,6 +40,25 @@ nav {
   background-color: #2b3137;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f6f8fa;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b8babe;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: gray;
+}
+
 @keyframes fade {
   from {
     opacity: 0;
@@ -45,13 +68,28 @@ nav {
   }
 }
 
-#schedule-png {
+.schedule-png {
   animation-name: fade;
   animation-duration: 2.5s;
   margin-bottom: 3vw;
   margin-top: 3vw;
   margin-left: 2vw;
   width: 14vw;
+}
+
+.aboutus {
+  border-radius: 1vw;
+  margin: 1.5rem;
+  border-left: #d0d7de solid 2px;
+  border-right: #d0d7de solid 2px;
+  border-top: #d0d7de solid 2px;
+  border-bottom: #d0d7de solid 2px;
+  background-color: #f6f8fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5vw;
+  max-width: 100vmax;
 }
 
 .header {
@@ -86,7 +124,7 @@ nav {
   display: flex;
 }
 
-#quote-author {
+.quote-author {
   font-size: 1.2vw;
   font-weight: 100;
   color: #c8c8c8;
@@ -214,15 +252,18 @@ nav {
 }
 
 #schedule-style {
+  border-radius: 10px;
   visibility: hidden;
   width: 80.05vw;
   margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 #schedule {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
   visibility: hidden;
   width: 80vmax;
   table-layout: fixed;
@@ -240,9 +281,6 @@ nav {
 }
 
 #schedule td {
-  border-left: 1px solid #d0d7de;
-  border-bottom: 1px solid #d0d7de;
-  border-right: 1px solid #d0d7de;
   padding: 1rem 30px 1rem 1rem;
   vertical-align: top;
 }
@@ -251,9 +289,10 @@ nav {
   word-break: break-word;
 }
 
+#add-assignment-button:hover,
 #edit-schedule-button:hover,
 .add:hover {
-  transition: 0.2s all;
+  transition: 0.4s all;
   background-color: #0969da;
   color: white;
   cursor: pointer;
@@ -305,7 +344,7 @@ nav {
   background-color: white;
   margin: auto;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 20px;
   width: 50%;
   max-height: 70%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -314,19 +353,20 @@ nav {
 
 #add-todo-button:hover {
   transition: 0.3s all;
-  opacity: 1;
+  border: 2px #2a9147 solid;
+  background-color: #2da44e;
+  color: white;
 }
 
 #add-todo-button {
-  opacity: 0.9;
   font-size: 1em;
   font-family: "Fredoka One", cursive;
   width: 90px;
   height: 30px;
   border-radius: 20px;
-  border: 1px #2a9147 solid;
-  background-color: #2da44e;
-  color: white;
+  border: 2px #d0d7de solid;
+  background-color: #f6f8fa;
+  color: gray;
   float: right;
   cursor: pointer;
 }
@@ -350,6 +390,18 @@ nav {
 }
 
 #add-assignment-button {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: "Fredoka One", cursive;
+  font-size: 200%;
+  text-align: match-parent;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: #ddf4ff;
+  color: #0969da;
+  margin-bottom: 7px;
   margin-left: 20px;
 }
 

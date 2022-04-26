@@ -37,6 +37,7 @@ const editScheduleModal = document.getElementById("edit-schedule");
 const loginWarningModal = document.getElementById("login-warning");
 const addAssignmentModal = document.getElementById("add-assignment");
 const todoDetailsModal = document.getElementById("todo-modal");
+const aboutUsModal = document.getElementById("about-us");
 
 document.getElementById("username-form").addEventListener(
     "submit",
@@ -97,7 +98,9 @@ document.getElementById("edit-schedule-button").onclick = function () {
     loginWarningModal.style.display = "block";
   }
 };
-
+document.getElementById("close-about-us-modal").onclick = function () {
+  aboutUsModal.style.display = "none";
+}
 document.getElementById("close-schedule-modal-button").onclick = function () {
   editScheduleModal.style.display = "none";
   getSubjectList().then(null);
@@ -129,7 +132,9 @@ document.getElementById("filter").onclick = function () {
     loginWarningModal.style.display = "block";
   }
 }
-
+document.getElementById("about-us-button").onclick = function () {
+  aboutUsModal.style.display = "block";
+}
 window.onclick = function (event) {
   if (event.target === editScheduleModal) {
     editScheduleModal.style.display = "none";
