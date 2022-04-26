@@ -21,8 +21,13 @@ html {
   box-sizing: inherit;
 }
 
-.quote-text {
+.quote-text,
+.aboutus-text {
   color: #2b3137;
+}
+
+.aboutus-text{
+  padding-right: 5rem;
 }
 
 body {
@@ -68,28 +73,34 @@ nav {
   }
 }
 
-.schedule-png {
+.schedule-png,
+.aboutus-png {
   animation-name: fade;
   animation-duration: 2.5s;
   margin-bottom: 3vw;
   margin-top: 3vw;
   margin-left: 2vw;
+}
+
+.schedule-png {
   width: 14vw;
+}
+
+.aboutus-png {
+  width: 200px
 }
 
 .aboutus {
   border-radius: 1vw;
   margin: 1.5rem;
-  border-left: #d0d7de solid 2px;
-  border-right: #d0d7de solid 2px;
-  border-top: #d0d7de solid 2px;
-  border-bottom: #d0d7de solid 2px;
+  border: #d0d7de solid 2px;
   background-color: #f6f8fa;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   padding: 0.5vw;
-  max-width: 100vmax;
+  min-width: 45vw;
+  overflow: auto;
 }
 
 .header {
@@ -102,18 +113,15 @@ nav {
   max-width: 100vmax;
 }
 
-.quote {
+.quote,
+.aboutus-content {
   animation-name: fade;
   animation-duration: 2.3s;
   margin-top: 3vw;
   margin-bottom: 3vw;
   font-family: 'Chocolateteehaypai', sans-serif;
-  font-size: 1.1vw;
   font-style: italic;
-  line-height: 2.5vw;
   padding-top: 1.5vw;
-  padding-left: 1.5vw;
-  padding-right: 1.5vw;
   justify-content: center;
   width: fit-content;
   height: fit-content;
@@ -124,8 +132,26 @@ nav {
   display: flex;
 }
 
+.quote {
+  font-size: 1.1vw;
+  line-height: 2.5vw;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+}
+
+.aboutus-content {
+ padding-left: 20px;
+ padding-right: 20px;
+ line-height: 35px;
+ white-space: nowrap;
+}
+
 .quote-author {
   font-size: 1.2vw;
+}
+
+.quote-author,
+.aboutus-author {
   font-weight: 100;
   color: #c8c8c8;
   margin-left: auto;
