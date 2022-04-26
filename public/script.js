@@ -147,6 +147,8 @@ window.onclick = function (event) {
     addAssignmentModal.style.display = "none";
   } else if (event.target === todoDetailsModal) {
     todoDetailsModal.style.display = "none";
+  } else if (event.target === aboutUsModal) {
+    aboutUsModal.style.display = "none";
   }
 };
 
