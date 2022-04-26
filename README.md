@@ -1,8 +1,7 @@
-<h1 align="center">TUA SHUAI</h1>
+<h1 align="center"><a href="https://tua-shuai-33f59.web.app/">TUA SHUAI</a></h1>
 <p align="center">
   <img width="250" src="./assets/images/logo-black.svg">
 </p>
-<a href="https://tua-shuai-33f59.web.app/">TUA SHUAI</a>
 
 ## Details
 
