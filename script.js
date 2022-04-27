@@ -44,7 +44,8 @@ document.getElementById("username-form").addEventListener(
     async function (event) {
       event.preventDefault();
       let uid = document.getElementById("username").value;
-      if (uid) {
+      if (uid && uid.trim()) {
+        uid = uid.trim();
         const user = await getDoc(doc(db, "users", uid));
         if (!user.exists()) {
           await setDoc(doc(db, "users", uid), {uid});
