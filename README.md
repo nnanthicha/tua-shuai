@@ -7,7 +7,7 @@
 
 #### Create by **[Thanaphum Thepwan](https://www.github.com/tnptw)**, **[Nanthicha Makjinda](https://www.github.com/nnanthicha)**, **[Ponrawoot Khamkhanongngam](https://www.github.com/Ponrawoot)**, and **[Thanachat Aimgosa](https://www.github.com/ThanachatAim)**
 
-Made as part of final project in 2110215 COMP ENG ESS, Academic Year 2021.
+Made as part of final project in 2110221 COMP ENG ESS, Academic Year 2021.
 
 Use HTML, CSS, JS
 
